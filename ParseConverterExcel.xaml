@@ -1,0 +1,278 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="ParseClipboard" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ue="clr-namespace:UiPath.Excel;assembly=UiPath.Excel.Activities" xmlns:ueab="clr-namespace:UiPath.Excel.Activities.Business;assembly=UiPath.Excel.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="out_str_Address1" Type="OutArgument(x:String)" />
+    <x:Property Name="out_str_Address2" Type="OutArgument(x:String)" />
+    <x:Property Name="out_str_Zipcode" Type="OutArgument(x:String)" />
+    <x:Property Name="out_str_City" Type="OutArgument(x:String)" />
+    <x:Property Name="out_bool_IsHomeAddress" Type="OutArgument(x:Boolean)" />
+    <x:Property Name="out_str_Username" Type="OutArgument(x:String)" />
+    <x:Property Name="out_str_PhoneNumber" Type="OutArgument(x:String)" />
+    <x:Property Name="out_int_PackageCount" Type="OutArgument(x:Int32)" />
+    <x:Property Name="out_str_MachineName" Type="OutArgument(x:String)" />
+    <x:Property Name="out_str_PhoneMAC" Type="OutArgument(x:String)" />
+    <x:Property Name="out_str_ReturnMachineName" Type="OutArgument(x:String)" />
+  </x:Members>
+  <sap2010:ExpressionActivityEditor.ExpressionActivityEditor>C#</sap2010:ExpressionActivityEditor.ExpressionActivityEditor>
+  <sap:VirtualizedContainerService.HintSize>1792,2473</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Text</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>UiPath.Excel.Activities.Business</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.CSharp</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="ParseClipboard" sap:VirtualizedContainerService.HintSize="678,2408" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ueab:ExcelProcessScopeX DisplayAlerts="{x:Null}" ExistingProcessAction="{x:Null}" FileConflictResolution="{x:Null}" LaunchMethod="{x:Null}" LaunchTimeout="{x:Null}" MacroSettings="{x:Null}" ProcessMode="{x:Null}" ShowExcelWindow="{x:Null}" DisplayName="Excel Process Scope" sap:VirtualizedContainerService.HintSize="636,2316" sap2010:WorkflowViewState.IdRef="ExcelProcessScopeX_1">
+      <ueab:ExcelProcessScopeX.Body>
+        <ActivityAction x:TypeArguments="ui:IExcelProcess">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="ui:IExcelProcess" Name="ExcelProcessScopeTag" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="602,2230" sap2010:WorkflowViewState.IdRef="Sequence_3">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ueab:ExcelApplicationCard Password="{x:Null}" ReadFormatting="{x:Null}" AutoSave="False" CreateNewFile="False" DisplayName="Use Excel File" sap:VirtualizedContainerService.HintSize="560,2138" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_1" WorkbookPath="C:\\Users\\mneves\\OneDrive - TFSB\\OneDrive - The Federal Savings Bank\\Documents\\Excel Macro\\Converter.xlsx">
+              <ueab:ExcelApplicationCard.Body>
+                <ActivityAction x:TypeArguments="ue:IWorkbookQuickHandle">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="ue:IWorkbookQuickHandle" Name="Converter" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="526,1870" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                    <Sequence.Variables>
+                      <Variable x:TypeArguments="x:String" Name="str_Address" />
+                    </Sequence.Variables>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ueab:ReadCellValueX DisplayName="Read Cell Value" GetFormattedText="False" sap:VirtualizedContainerService.HintSize="484,158" sap2010:WorkflowViewState.IdRef="ReadCellValueX_1">
+                      <ueab:ReadCellValueX.Cell>
+                        <InArgument x:TypeArguments="ue:IReadCellRef">
+                          <CSharpValue x:TypeArguments="ue:IReadCellRef" sap2010:WorkflowViewState.IdRef="CSharpValue`1_7">Converter.Sheet["ShippingParsing"].Cell["E13"]</CSharpValue>
+                        </InArgument>
+                      </ueab:ReadCellValueX.Cell>
+                      <ueab:ReadCellValueX.SaveTo>
+                        <OutArgument x:TypeArguments="x:String">
+                          <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_1">str_Address</CSharpReference>
+                        </OutArgument>
+                      </ueab:ReadCellValueX.SaveTo>
+                    </ueab:ReadCellValueX>
+                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ParseAddress workflow" sap:VirtualizedContainerService.HintSize="484,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="ParseAddress.xaml">
+                      <ui:InvokeWorkflowFile.Arguments>
+                        <InArgument x:TypeArguments="x:String" x:Key="str_Address">
+                          <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_5">str_Address</CSharpValue>
+                        </InArgument>
+                        <OutArgument x:TypeArguments="x:String" x:Key="out_str_Address1">
+                          <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_6">out_str_Address1</CSharpReference>
+                        </OutArgument>
+                        <OutArgument x:TypeArguments="x:String" x:Key="out_str_Address2">
+                          <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_5">out_str_Address2</CSharpReference>
+                        </OutArgument>
+                        <OutArgument x:TypeArguments="x:String" x:Key="out_str_Zipcode">
+                          <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_4">out_str_Zipcode</CSharpReference>
+                        </OutArgument>
+                        <OutArgument x:TypeArguments="x:String" x:Key="out_str_City">
+                          <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_3">out_str_City</CSharpReference>
+                        </OutArgument>
+                        <OutArgument x:TypeArguments="x:Boolean" x:Key="out_bool_IsHomeAddress">
+                          <CSharpReference x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpReference`1_2">out_bool_IsHomeAddress</CSharpReference>
+                        </OutArgument>
+                      </ui:InvokeWorkflowFile.Arguments>
+                    </ui:InvokeWorkflowFile>
+                    <ueab:ReadCellValueX DisplayName="Read Cell Value" GetFormattedText="False" sap:VirtualizedContainerService.HintSize="484,158" sap2010:WorkflowViewState.IdRef="ReadCellValueX_2">
+                      <ueab:ReadCellValueX.Cell>
+                        <InArgument x:TypeArguments="ue:IReadCellRef">
+                          <CSharpValue x:TypeArguments="ue:IReadCellRef" sap2010:WorkflowViewState.IdRef="CSharpValue`1_13">Converter.Sheet["ShippingParsing"].Cell["E11"]</CSharpValue>
+                        </InArgument>
+                      </ueab:ReadCellValueX.Cell>
+                      <ueab:ReadCellValueX.SaveTo>
+                        <OutArgument x:TypeArguments="x:String">
+                          <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_7">out_str_Username</CSharpReference>
+                        </OutArgument>
+                      </ueab:ReadCellValueX.SaveTo>
+                    </ueab:ReadCellValueX>
+                    <ueab:ReadCellValueX DisplayName="Read Cell Value" GetFormattedText="False" sap:VirtualizedContainerService.HintSize="484,158" sap2010:WorkflowViewState.IdRef="ReadCellValueX_3">
+                      <ueab:ReadCellValueX.Cell>
+                        <InArgument x:TypeArguments="ue:IReadCellRef">
+                          <CSharpValue x:TypeArguments="ue:IReadCellRef" sap2010:WorkflowViewState.IdRef="CSharpValue`1_15">Converter.Sheet["ShippingParsing"].Cell["E12"]</CSharpValue>
+                        </InArgument>
+                      </ueab:ReadCellValueX.Cell>
+                      <ueab:ReadCellValueX.SaveTo>
+                        <OutArgument x:TypeArguments="x:String">
+                          <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_8">out_str_PhoneNumber</CSharpReference>
+                        </OutArgument>
+                      </ueab:ReadCellValueX.SaveTo>
+                    </ueab:ReadCellValueX>
+                    <If sap:VirtualizedContainerService.HintSize="484,338" sap2010:WorkflowViewState.IdRef="If_1">
+                      <If.Condition>
+                        <InArgument x:TypeArguments="x:Boolean">
+                          <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_11">System.String.IsNullOrWhiteSpace(out_str_PhoneNumber)</CSharpValue>
+                        </InArgument>
+                      </If.Condition>
+                      <If.Then>
+                        <Sequence sap:VirtualizedContainerService.HintSize="304,152" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:String">
+                                <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_11">out_str_PhoneNumber</CSharpReference>
+                              </OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:String">7739220029</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                        </Sequence>
+                      </If.Then>
+                      <If.Else>
+                        <Sequence sap2010:WorkflowViewState.IdRef="Sequence_5">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </Sequence>
+                      </If.Else>
+                    </If>
+                    <Assign sap:VirtualizedContainerService.HintSize="484,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:Int32">
+                          <CSharpReference x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpReference`1_9">out_int_PackageCount</CSharpReference>
+                        </OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:Int32">
+                          <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_12">Converter.Sheet["ShippingParsing"].Cell["E16"].ToInt()</CSharpValue>
+                        </InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <ueab:ReadCellValueX DisplayName="Read Cell Value" GetFormattedText="False" sap:VirtualizedContainerService.HintSize="484,158" sap2010:WorkflowViewState.IdRef="ReadCellValueX_4">
+                      <ueab:ReadCellValueX.Cell>
+                        <InArgument x:TypeArguments="ue:IReadCellRef">
+                          <CSharpValue x:TypeArguments="ue:IReadCellRef" sap2010:WorkflowViewState.IdRef="CSharpValue`1_14">Converter.Sheet["ShippingParsing"].Cell["E1"]</CSharpValue>
+                        </InArgument>
+                      </ueab:ReadCellValueX.Cell>
+                      <ueab:ReadCellValueX.SaveTo>
+                        <OutArgument x:TypeArguments="x:String">
+                          <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_10">out_str_MachineName</CSharpReference>
+                        </OutArgument>
+                      </ueab:ReadCellValueX.SaveTo>
+                    </ueab:ReadCellValueX>
+                    <ueab:ReadCellValueX DisplayName="Read Cell Value" GetFormattedText="False" sap:VirtualizedContainerService.HintSize="484,158" sap2010:WorkflowViewState.IdRef="ReadCellValueX_5">
+                      <ueab:ReadCellValueX.Cell>
+                        <InArgument x:TypeArguments="ue:IReadCellRef">
+                          <CSharpValue x:TypeArguments="ue:IReadCellRef" sap2010:WorkflowViewState.IdRef="CSharpValue`1_16">Converter.Sheet["ShippingParsing"].Cell["E7"]</CSharpValue>
+                        </InArgument>
+                      </ueab:ReadCellValueX.Cell>
+                      <ueab:ReadCellValueX.SaveTo>
+                        <OutArgument x:TypeArguments="x:String">
+                          <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_12">out_str_PhoneMAC</CSharpReference>
+                        </OutArgument>
+                      </ueab:ReadCellValueX.SaveTo>
+                    </ueab:ReadCellValueX>
+                    <ueab:ReadCellValueX DisplayName="Read Cell Value" GetFormattedText="True" sap:VirtualizedContainerService.HintSize="484,158" sap2010:WorkflowViewState.IdRef="ReadCellValueX_6">
+                      <ueab:ReadCellValueX.Cell>
+                        <InArgument x:TypeArguments="ue:IReadCellRef">
+                          <CSharpValue x:TypeArguments="ue:IReadCellRef" sap2010:WorkflowViewState.IdRef="CSharpValue`1_17">Converter.Sheet["ShippingParsing"].Cell["E3"]</CSharpValue>
+                        </InArgument>
+                      </ueab:ReadCellValueX.Cell>
+                      <ueab:ReadCellValueX.SaveTo>
+                        <OutArgument x:TypeArguments="x:String">
+                          <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_13">out_str_ReturnMachineName</CSharpReference>
+                        </OutArgument>
+                      </ueab:ReadCellValueX.SaveTo>
+                    </ueab:ReadCellValueX>
+                  </Sequence>
+                </ActivityAction>
+              </ueab:ExcelApplicationCard.Body>
+            </ueab:ExcelApplicationCard>
+          </Sequence>
+        </ActivityAction>
+      </ueab:ExcelProcessScopeX.Body>
+    </ueab:ExcelProcessScopeX>
+  </Sequence>
+</Activity>

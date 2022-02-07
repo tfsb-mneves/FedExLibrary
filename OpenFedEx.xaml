@@ -1,0 +1,208 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="OpenFedEx" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:sc="clr-namespace:System.ComponentModel;assembly=System.ComponentModel.TypeConverter" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="out_web_FedEx" Type="OutArgument(ui:UiElement)" />
+  </x:Members>
+  <sap2010:ExpressionActivityEditor.ExpressionActivityEditor>C#</sap2010:ExpressionActivityEditor.ExpressionActivityEditor>
+  <sap:VirtualizedContainerService.HintSize>1792,1782</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Text</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>System.ComponentModel</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.CSharp</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="OpenFedEx" sap:VirtualizedContainerService.HintSize="569,1717" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Browser Chrome: FedEx Ship Manager - Create a Shipment" sap:VirtualizedContainerService.HintSize="527,1625" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" OpenMode="Always" ScopeGuid="7b150ea8-4d82-428b-a31e-a8db5c3679ff" Version="V1" WindowResize="Maximize">
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="493,1409" sap2010:WorkflowViewState.IdRef="Sequence_5">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:String" Name="str_URL" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <uix:NGetUrl DisplayName="Get URL" sap:VirtualizedContainerService.HintSize="451,86" sap2010:WorkflowViewState.IdRef="NGetUrl_1" Version="V1">
+              <uix:NGetUrl.CurrentUrl>
+                <OutArgument x:TypeArguments="x:String">
+                  <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_1">str_URL</CSharpReference>
+                </OutArgument>
+              </uix:NGetUrl.CurrentUrl>
+            </uix:NGetUrl>
+            <ui:IfElseIf DisplayName="Else If" sap:VirtualizedContainerService.HintSize="451,1189" sap2010:WorkflowViewState.IdRef="IfElseIf_1">
+              <ui:IfElseIf.ConditionBlocks>
+                <sc:BindingList x:TypeArguments="ui:IfElseIfBlock" AllowEdit="True" AllowNew="True" AllowRemove="True" RaiseListChangedEvents="True">
+                  <ui:IfElseIfBlock BlockType="If">
+                    <ui:IfElseIfBlock.Condition>
+                      <InArgument x:TypeArguments="x:Boolean">
+                        <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_1">str_URL.Contains("shipAction.do?method=doInitialize")</CSharpValue>
+                      </InArgument>
+                    </ui:IfElseIfBlock.Condition>
+                    <ui:IfElseIfBlock.Then>
+                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="376,179" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info">
+                          <ui:LogMessage.Message>
+                            <InArgument x:TypeArguments="x:Object">
+                              <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_3">"FedEx Shipping opened"</CSharpValue>
+                            </InArgument>
+                          </ui:LogMessage.Message>
+                        </ui:LogMessage>
+                      </Sequence>
+                    </ui:IfElseIfBlock.Then>
+                  </ui:IfElseIfBlock>
+                  <ui:IfElseIfBlock BlockType="Else">
+                    <ui:IfElseIfBlock.Then>
+                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="376,780" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info">
+                          <ui:LogMessage.Message>
+                            <InArgument x:TypeArguments="x:Object">
+                              <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_4">"FedEx login opened"</CSharpValue>
+                            </InArgument>
+                          </ui:LogMessage.Message>
+                        </ui:LogMessage>
+                        <uix:NGoToUrl DisplayName="Go To URL" sap:VirtualizedContainerService.HintSize="334,81" sap2010:WorkflowViewState.IdRef="NGoToUrl_1" Url="https://www.fedex.com/secure-login/en-us/#/login-credentials" Version="V1" />
+                        <uix:NClick ClickType="Single" DelayAfter="2" DisplayName="Click 'Log in'" sap:VirtualizedContainerService.HintSize="334,192" sap2010:WorkflowViewState.IdRef="NClick_1" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="7b150ea8-4d82-428b-a31e-a8db5c3679ff" Version="V1">
+                          <uix:NClick.Target>
+                            <uix:TargetAnchorable BrowserURL="https://www.fedex.com/secure-login/en-us/#/login-credentials" DesignTimeRectangle="1214, 640, 130, 60" ElementType="Button" FriendlyName="'Log in'" FullSelectorArgument="&lt;webctrl id='login-btn' tag='BUTTON' /&gt;" FuzzySelectorArgument="&lt;webctrl id='login-btn' tag='BUTTON' type='submit' aaname=' Log in ' check:text='Log in' /&gt;" Guid="ca767635-da24-4f80-94ad-cab7b152c533" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAIYAAABACAYAAADfyA84AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAOZSURBVHhe7Zm9ShxhGIVzK15CbiFlLiGlKVOmEdJJKrER0ohB0gRsQkCwTEAESRWCYAQhARtTCEYQiQgyOcf32803kzO6418C73ngedWZM7vLztlvZ9cHjTECF8NI/hRjGr9aS0FMogI2pyAmUQGbUxCTqIDNKYhJVMDmFMQkKmBzCmISFbA5BTGJCticgphEBWxOQUyiAjanICZRAZtTEJOogM0piElUwOYUxCQqYHMKYhIVsDkFMYkK2JyCmEQFbE5BTKICNqcgJlEBm1MQk6iAzSmISVTA5hTEJCpgcwpiEhWwOQUxiQrclysfyoMgX3VGOfOoadZx7PGvpjkvh5PTn02z87pp5qb0cbWzz5DFfZ7gNmrOcBv7m02z9lQfV3vZ49/A32NwH6viMe2X3Q3uc6Wz718IYhIVuC+vU4zFVziZ5ZBe8ER/fKKPn8YJ2qxPWh8/mmZJHV85cTHACbIz1X7qYvQ4tBgLWA3OSpwc4vg3WD24bw6v8B2czDF4lW48/vs2tjqZXdzmwsOyHz+XXsRKcoTb7h7bdUgxyPbzdsbF6HFQMVCA8RMJDt6JDPxSnfjzz+1X6fJa2UF6ijPEocXgKrRcZVyMHocUYx5FGMP3bJG58CWuNUqMfCorCt3FcSMOe4o1xEmLcVrdb11oF6PHIcVYr1+BV2TrlWVvvmzHNcdR2UZ2Osv6dZy0GPtv8ThG5cDP9VJWF6PHIcWon2heyKnMyHpl2Mc1xMV2FKG+aN2oj+nsGzE+tseJi4Hbma+uj87KW5yL0eO9rhj4eHpctpHWinEPxeC2ze9lA/iGtzwXo8chxbiNa4y9so30XWOoE9rn0GJM42L3oGxjGcZldDHaDinGbXwqeb9ZdhCUS30qudNiwNYnoxEuRttBxYA3/h5jChmchDHItL7HgPVyfxfFoNv1YyAuRtvWE3sJ9YXijb/5RFlaBbqEuyrGTPeaxsVoO1ExxJN21f9KZjt55SKuRXaxOtTfMZAz/H2Ik7qFAl71P5frFoOu1m9rLob9nwUxiQrYnIKYRAVsTkFMogI2pyAmUQGbUxCTqIDNKYhJVMDmFMQkKmBzCmISFbA5BTGJCticgphEBWxOQUyiAjanICZRAZtTEJOogM0piElUwOYUxCQqYHMKYhIVsDkFMYkK2JyCmEQFbE5BTKICNqcgJlEBm1MQk6iAzSmISVTA5hTEJCpgcwpiGtPBxTCCpvkN3Di0u4aVlxMAAAAASUVORK5CYII=" InformativeScreenshot="f69132e39cff6da731483dabb14cf59e.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Login' /&gt;" SearchSteps="Selector, FuzzySelector, Image" />
+                          </uix:NClick.Target>
+                          <uix:NClick.VerifyOptions>
+                            <uix:VerifyExecutionOptions DisplayName="Verification target" Mode="Disappears" Retry="True">
+                              <uix:VerifyExecutionOptions.Target>
+                                <uix:TargetAnchorable BrowserURL="https://www.fedex.com/secure-login/en-us/#/login-credentials" DesignTimeRectangle="1214, 685, 130, 60" ElementType="Button" FriendlyName="'Log in'" FullSelectorArgument="&lt;webctrl id='login-btn' tag='BUTTON' /&gt;" FuzzySelectorArgument="&lt;webctrl id='login-btn' tag='BUTTON' type='submit' aaname=' Log in ' check:text='Log in' /&gt;" Guid="b4f5a2c7-2e73-4bf2-bf52-b8665b76b8f2" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAIYAAABACAYAAADfyA84AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAOZSURBVHhe7Zm9ShxhGIVzK15CbiFlLiGlKVOmEdJJKrER0ohB0gRsQkCwTEAESRWCYAQhARtTCEYQiQgyOcf32803kzO6418C73ngedWZM7vLztlvZ9cHjTECF8NI/hRjGr9aS0FMogI2pyAmUQGbUxCTqIDNKYhJVMDmFMQkKmBzCmISFbA5BTGJCticgphEBWxOQUyiAjanICZRAZtTEJOogM0piElUwOYUxCQqYHMKYhIVsDkFMYkK2JyCmEQFbE5BTKICNqcgJlEBm1MQk6iAzSmISVTA5hTEJCpgcwpiEhWwOQUxiQrclysfyoMgX3VGOfOoadZx7PGvpjkvh5PTn02z87pp5qb0cbWzz5DFfZ7gNmrOcBv7m02z9lQfV3vZ49/A32NwH6viMe2X3Q3uc6Wz718IYhIVuC+vU4zFVziZ5ZBe8ER/fKKPn8YJ2qxPWh8/mmZJHV85cTHACbIz1X7qYvQ4tBgLWA3OSpwc4vg3WD24bw6v8B2czDF4lW48/vs2tjqZXdzmwsOyHz+XXsRKcoTb7h7bdUgxyPbzdsbF6HFQMVCA8RMJDt6JDPxSnfjzz+1X6fJa2UF6ijPEocXgKrRcZVyMHocUYx5FGMP3bJG58CWuNUqMfCorCt3FcSMOe4o1xEmLcVrdb11oF6PHIcVYr1+BV2TrlWVvvmzHNcdR2UZ2Osv6dZy0GPtv8ThG5cDP9VJWF6PHIcWon2heyKnMyHpl2Mc1xMV2FKG+aN2oj+nsGzE+tseJi4Hbma+uj87KW5yL0eO9rhj4eHpctpHWinEPxeC2ze9lA/iGtzwXo8chxbiNa4y9so30XWOoE9rn0GJM42L3oGxjGcZldDHaDinGbXwqeb9ZdhCUS30qudNiwNYnoxEuRttBxYA3/h5jChmchDHItL7HgPVyfxfFoNv1YyAuRtvWE3sJ9YXijb/5RFlaBbqEuyrGTPeaxsVoO1ExxJN21f9KZjt55SKuRXaxOtTfMZAz/H2Ik7qFAl71P5frFoOu1m9rLob9nwUxiQrYnIKYRAVsTkFMogI2pyAmUQGbUxCTqIDNKYhJVMDmFMQkKmBzCmISFbA5BTGJCticgphEBWxOQUyiAjanICZRAZtTEJOogM0piElUwOYUxCQqYHMKYhIVsDkFMYkK2JyCmEQFbE5BTKICNqcgJlEBm1MQk6iAzSmISVTA5hTEJCpgcwpiGtPBxTCCpvkN3Di0u4aVlxMAAAAASUVORK5CYII=" InformativeScreenshot="ffeb1d85dfb18c83d566fdbe6b00e394.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Login' /&gt;" SearchSteps="Selector, FuzzySelector">
+                                  <uix:TargetAnchorable.Anchors>
+                                    <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                                      <uix:Target DesignTimeRectangle="1244, 701, 70, 25" ElementType="Text" FriendlyName="'Log in'" FullSelectorArgument="&lt;webctrl id='login-loading-btn' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl id='login-loading-btn' tag='SPAN' type='' aaname=' Log in ' check:text='Log in' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAEoAAAAdCAYAAAANW/o+AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAJUSURBVGhD7ZexSgNBEIbzKj6Cr2DpI1jG0tImYBesJE3AJkTERrARIZBSIQSClYgQAwEFm1gIUQjBEAjjP7p3zp57uTlzKxb7w0/I7szu3rebuU2JyiUKznYApXQApXQApXQApXQApXQApXQApXQApbQN6uySvnVvBS51ZYOog9zJO9HCpLNmr0SDI6KDNXeedHUHsZhzijGk5hhj1CNqb7vzpJetv4vvsTBHy7GmkekmzHlm960OqnGIhzMpqcLEV1vu/DIW3JMPkaZnoqYrX1gNCpoitiL62d5A1XFa5iacNUb+CU4X9x3gBAzwcLGwi93Nn2PcJWKGGLO+bvrx2dz7OmlvGDuZm3QeUKz+rh3jBxSAxANDL+eOGPhWgFjc2Lt43DYdrBSQeZwXFJ/SYxHjBVQNYGLxb94R8+l91CoTxro2J449RF6kcQroPNaCmol55QZ7AdWRO5QRK0/eU820o2a9mTbWIPEz+I21oEanWEcEC58ds3leQMmJuTC6YiLLkzNCDfpsBxj5EujKnERfpDg3xWpQGKcm6uvclIT/eaJwHZiYNpZ1ov4AFLf1Hk0D9IAS4QVUETXqybSx0mqU6wHTnBdUGS+PF9PGcOLNKRJUEW+9C1wkYwG2663nFRRsvXkjFQoKXvkehcvmAIuKhRjrHgXLn4cPUOy+XAMrF6glkoV35Zs54FlAl8gXqEqyJhYC6ucgmf/1qol4lxuoZUOcHnnHYc3xfYyHvMOGZP1n/C0odkuWgSxQwakOoJQOoJQOoJQOoJQOoJQOoFQu0QcsIIlryJq0TgAAAABJRU5ErkJggg==" SearchSteps="FuzzySelector, Image" />
+                                    </scg:List>
+                                  </uix:TargetAnchorable.Anchors>
+                                </uix:TargetAnchorable>
+                              </uix:VerifyExecutionOptions.Target>
+                              <uix:VerifyExecutionOptions.Timeout>
+                                <InArgument x:TypeArguments="x:Double" />
+                              </uix:VerifyExecutionOptions.Timeout>
+                            </uix:VerifyExecutionOptions>
+                          </uix:NClick.VerifyOptions>
+                        </uix:NClick>
+                        <uix:NGoToUrl DisplayName="Go To URL" sap:VirtualizedContainerService.HintSize="334,81" sap2010:WorkflowViewState.IdRef="NGoToUrl_2" Url="https://www.fedex.com/shipping/shipAction.do?method=doInitialize&amp;utype=null" Version="V1" />
+                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info">
+                          <ui:LogMessage.Message>
+                            <InArgument x:TypeArguments="x:Object">
+                              <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_5">"FedEx Shipping opened"</CSharpValue>
+                            </InArgument>
+                          </ui:LogMessage.Message>
+                        </ui:LogMessage>
+                      </Sequence>
+                    </ui:IfElseIfBlock.Then>
+                  </ui:IfElseIfBlock>
+                </sc:BindingList>
+              </ui:IfElseIf.ConditionBlocks>
+            </ui:IfElseIf>
+          </Sequence>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.OutUiElement>
+        <OutArgument x:TypeArguments="ui:UiElement">
+          <CSharpReference x:TypeArguments="ui:UiElement" sap2010:WorkflowViewState.IdRef="CSharpReference`1_2">out_web_FedEx</CSharpReference>
+        </OutArgument>
+      </uix:NApplicationCard.OutUiElement>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp Area="-8, -8, 2576, 1408" BrowserType="Chrome" IconBase64="iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAMAAAAoyzS7AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAGUExURf///wAAAFXC034AAAABdFJOUwBA5thmAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAACklEQVQYV2NgAAAAAgABo9o9lAAAAABJRU5ErkJggg==" InformativeScreenshot="b56056edd1b49c77b32ba972e1d51dd7.png" Selector="&lt;html app='chrome.exe' title='FedEx Ship Manager - Create a Shipment'/&gt;" Url="https://www.fedex.com/shipping/shipAction.do?method=doInitialize&amp;utype=null" />
+      </uix:NApplicationCard.TargetApp>
+    </uix:NApplicationCard>
+  </Sequence>
+</Activity>

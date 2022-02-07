@@ -1,0 +1,611 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="ReturnLabel" this:ReturnLabel.str_UserName="Test" this:ReturnLabel.str_ReturnReference="Equipment" this:ReturnLabel.bool_IsLaptopShipment="True" this:ReturnLabel.int_NumberOfReturns="1" this:ReturnLabel.bool_IsTerm="True" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:si="clr-namespace:System.IO;assembly=System.IO.FileSystem" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="str_UserName" Type="InArgument(x:String)" />
+    <x:Property Name="str_ReturnReference" Type="InArgument(x:String)" />
+    <x:Property Name="bool_IsLaptopShipment" Type="InArgument(x:Boolean)" />
+    <x:Property Name="out_str_ReturnTrackingNumber" Type="OutArgument(x:String)" />
+    <x:Property Name="out_fileinfo_ReturnLabelPdf" Type="OutArgument(si:FileInfo)" />
+    <x:Property Name="io_web_FedEx" Type="InOutArgument(ui:UiElement)" />
+    <x:Property Name="int_NumberOfReturns" Type="InArgument(x:Int32)" />
+    <x:Property Name="bool_IsTerm" Type="InArgument(x:Boolean)" />
+  </x:Members>
+  <sap2010:ExpressionActivityEditor.ExpressionActivityEditor>C#</sap2010:ExpressionActivityEditor.ExpressionActivityEditor>
+  <sap:VirtualizedContainerService.HintSize>1792,3829</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Text</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Models</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.CSharp</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.Watcher</AssemblyReference>
+      <AssemblyReference>System.IO.Packaging</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.DriveInfo</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.AccessControl</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="ReturnLabel" sap:VirtualizedContainerService.HintSize="602,3764" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <If sap:VirtualizedContainerService.HintSize="560,391" sap2010:WorkflowViewState.IdRef="If_1">
+      <If.Condition>
+        <InArgument x:TypeArguments="x:Boolean">
+          <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_2">io_web_FedEx == null</CSharpValue>
+        </InArgument>
+      </If.Condition>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <If.Then>
+        <Sequence sap:VirtualizedContainerService.HintSize="376,204" sap2010:WorkflowViewState.IdRef="Sequence_4">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke OpenFedEx workflow" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="OpenFedEx.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <OutArgument x:TypeArguments="ui:UiElement" x:Key="out_web_FedEx">
+                <CSharpReference x:TypeArguments="ui:UiElement" sap2010:WorkflowViewState.IdRef="CSharpReference`1_2">io_web_FedEx</CSharpReference>
+              </OutArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+          </ui:InvokeWorkflowFile>
+        </Sequence>
+      </If.Then>
+      <If.Else>
+        <Sequence sap2010:WorkflowViewState.IdRef="Sequence_5">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </Sequence>
+      </If.Else>
+    </If>
+    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Application/Browser" sap:VirtualizedContainerService.HintSize="560,3241" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" ScopeGuid="d0eca8fc-fec9-4f0e-b552-5bf63b0db6f7" Version="V1">
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="526,3105" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:String" Name="str_URL" />
+              <Variable x:TypeArguments="x:String" Name="str_Text" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <uix:NGetUrl DisplayName="Get URL" sap:VirtualizedContainerService.HintSize="484,86" sap2010:WorkflowViewState.IdRef="NGetUrl_1" Version="V1">
+              <uix:NGetUrl.CurrentUrl>
+                <OutArgument x:TypeArguments="x:String">
+                  <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_1">str_URL</CSharpReference>
+                </OutArgument>
+              </uix:NGetUrl.CurrentUrl>
+            </uix:NGetUrl>
+            <If DisplayName="If is existing shipment" sap:VirtualizedContainerService.HintSize="484,51" sap2010:WorkflowViewState.IdRef="If_2">
+              <If.Condition>
+                <InArgument x:TypeArguments="x:Boolean">
+                  <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_3">str_URL.Contains("shipAction.handle?method=doContinue")</CSharpValue>
+                </InArgument>
+              </If.Condition>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <If.Then>
+                <Sequence sap:VirtualizedContainerService.HintSize="376,248" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <uix:NClick ClickType="Single" DisplayName="Click 'Create return shipment'" sap:VirtualizedContainerService.HintSize="334,156" sap2010:WorkflowViewState.IdRef="NClick_1" InteractionMode="DebuggerApi" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="d0eca8fc-fec9-4f0e-b552-5bf63b0db6f7" Version="V1">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable BrowserURL="https://www.fedex.com/shipping/shipAction.handle?method=doContinue" DesignTimeRectangle="1068, 448, 132, 20" ElementType="Button" FriendlyName="'Create return shipment'" FullSelectorArgument="&lt;webctrl id='button.returnShipment' tag='INPUT' type='button' /&gt;" FuzzySelectorArgument="&lt;webctrl id='button.returnShipment' tag='INPUT' type='button' aaname='Create return shipment' check:text='Create return shipment' /&gt;" Guid="33961f9b-9b92-4fb6-9934-d11634f2e0ac" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAIgAAAAYCAYAAAAh3LURAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAKOSURBVGhD7VdLbgMxCO1tc7fONZIzTHbdTU4wa9c2YANmUKaZfCqB9NQ6mMfvOVK+lmVJgcAWQiABF00gp9MpEGgIgQRchEACLkIgARchkICLTYFM1zUJu51F4GG4LGm9TrbvKHzPaX1W/XfifCtDXNLZ8JUZVO/F8L0DbF6mQKCZNc3fFHTOrZWP5jQRyREohRTapwoEa/9kgXwU5LxGgdyzNFL8Df4CGRKj8dcgv41IePI+FSTubgnSzD+lmYfW+uVnlU/3p14vLXKpf/N/P3R/7vU6YoN4NFa/5s3O/gB5DVRf7q2V3niwn3yeOc8FYqrx2pAXjImT8uWeKG5rXoNAYEH828MAJW7F9MJLI4KjNkzFqW8id1nOyx/yqxfq8dwlkH6m+2Zvxc/BuVQeyatqMuLajNAnF8hnWwz6psc15pf7IU7KL2anantIIHqIbeh4bv4MKr7ahkBkoXimuxw6/yAmOAPvXwTSa6D75jLpDoEGn037gZfmai+sxuj6xF0V5whN7xHO8gFRDnn3GQJhg+FWCyCf1aAYBvoGY8si6Py0RG21yWMEsnVfYuzB5lVz4JwHCQTyacO9qh52CWQs0IAekhPjDkbFDcvZwrAkNSiBVwqkA4Zeb1auVwvEfeiqh30CyR9CM5wcg6yGql8WzhOK5BjXeNzhO0sf8qsFuDzyDHGd6xGByEHLmewVSLuLPsh/v0Bk3U6+fN4tkB7ErBU1JgAgMVr38c/XtFZaNahiyC/y8pwcZn7Gla2/wC4Cystz0C8h4npEIAU9V7H+yPYKxP7VtEMg7AzGelL3pEDkvDYFEngTtCDfjBDIpyEEEvhPCIEEXIRAAi5CIAEXg0ACAQshkICDJf0CpSJgHvxzrIgAAAAASUVORK5CYII=" InformativeScreenshot="3803afcb0865fc78b333a6a4b2dcbd4b.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='FedEx Ship Manager - Print Your Label(s)' /&gt;" SearchSteps="Selector, FuzzySelector, Image" />
+                    </uix:NClick.Target>
+                  </uix:NClick>
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence sap:VirtualizedContainerService.HintSize="376,173" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <uix:NGoToUrl DisplayName="Go To URL" sap:VirtualizedContainerService.HintSize="334,81" sap2010:WorkflowViewState.IdRef="NGoToUrl_1" Url="https://www.fedex.com/shipping/navigationHeaderAction.do?method=doNewReturnShipment" Version="V1" />
+                </Sequence>
+              </If.Else>
+            </If>
+            <uix:NGetText DisplayName="Get Text '*Address 1'" sap:VirtualizedContainerService.HintSize="484,156" sap2010:WorkflowViewState.IdRef="NGetText_1" ScopeIdentifier="d0eca8fc-fec9-4f0e-b552-5bf63b0db6f7" Version="V1">
+              <uix:NGetText.Target>
+                <uix:TargetAnchorable BrowserURL="https://www.fedex.com/shipping/navigationHeaderAction.do?method=doNewReturnShipment" DesignTimeRectangle="939, 754, 199, 18" ElementType="InputBox" FriendlyName="'INPUT fromData.addressL…'" FullSelectorArgument="&lt;webctrl id='fromData.addressLine1' tag='INPUT' type='text' /&gt;" FuzzySelectorArgument="&lt;webctrl id='fromData.addressLine1' tag='INPUT' type='text' aaname='*Address 1' /&gt;" Guid="939fc714-f1e4-4c25-ba5b-7cb21273e935" InformativeScreenshot="60301bbaa642f5cdde0c98c0d14afdf2.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='FedEx Ship Manager - Create Return Shipment' /&gt;" SearchSteps="FuzzySelector">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target DesignTimeRectangle="829, 754, 50, 12" ElementType="Text" FriendlyName="'*Address 1'" FullSelectorArgument="&lt;webctrl parentid='from.address1.label' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='from.address1.label' tag='LABEL' type='' aaname='Address 1' check:text='*Address 1' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAADYAAAAQCAYAAABdsIz2AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFCSURBVEhL7ZRtDoIwDIa9yi4GVxlXIdyE7BomHILfdd36tTmFGE0E/fFGKV37PrRwWdcVzqg/2NH0O2BhcOC6EZYqrgrgXQ/jtY4vMHYO/FzHP6nHPSswNO3BDy3jrG8BQx9xCFHbYLMHNwT9lXvZNBZxQwQ3YGnCGO9inMHwPF1zHcmL6qcl172O0FPMtWqiCh8s9OMhENwmWJBJ5ckFii9Tr+uJptlE+k95ZFLAjNF0XgzqxBGAISUn1eHej7aDtQssJpl3C5vmA3la8pQrY2rYrKIFployAVKql/Lw2pq329GaltUOsPTEqKkoFX4PmJ6/l/QuPlrZNMZbxm3OEzBjSm4qwGurqGDZuF2vnKdbQWewB9YRwJYvqy2wYq9V+qTteuz8eFT1JC+qnD7HtWaxPU/XcXNi59Mf7Gg6KdgKNxjk6o0dGyvnAAAAAElFTkSuQmCC" SearchSteps="FuzzySelector, Image" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NGetText.Target>
+              <uix:NGetText.Text>
+                <OutArgument x:TypeArguments="x:String">
+                  <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_3">str_Text</CSharpReference>
+                </OutArgument>
+              </uix:NGetText.Text>
+            </uix:NGetText>
+            <If sap:VirtualizedContainerService.HintSize="484,1745" sap2010:WorkflowViewState.IdRef="If_3">
+              <If.Condition>
+                <InArgument x:TypeArguments="x:Boolean">
+                  <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_4">System.String.IsNullOrWhiteSpace(str_Text)</CSharpValue>
+                </InArgument>
+              </If.Condition>
+              <If.Then>
+                <Sequence sap:VirtualizedContainerService.HintSize="376,1557" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                  <Sequence.Variables>
+                    <Variable x:TypeArguments="ui:UiElement" Name="ui_Zipcode" />
+                  </Sequence.Variables>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into '*Contact name'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="334,217" sap2010:WorkflowViewState.IdRef="NTypeInto_1" InteractionMode="DebuggerApi" ScopeIdentifier="d0eca8fc-fec9-4f0e-b552-5bf63b0db6f7" Version="V1">
+                    <uix:NTypeInto.Target>
+                      <uix:TargetAnchorable BrowserURL="https://www.fedex.com/shipping/navigationHeaderAction.do?method=doNewReturnShipment" DesignTimeRectangle="939, 927, 199, 18" ElementType="InputBox" FriendlyName="'JESUS HERNANDEZ'" FullSelectorArgument="&lt;webctrl id='fromData.contactName' tag='INPUT' type='text' /&gt;" FuzzySelectorArgument="&lt;webctrl id='fromData.contactName' tag='INPUT' type='text' aaname='*Contact name' /&gt;" Guid="ddf38b12-b40f-4052-84c7-ef80b2dc10db" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAMsAAAAWCAYAAABuW2jCAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHzSURBVHhe7ZfBjYMwEEVdI1JaoQDkVkgpSSE5pALOXuyxxzOszQ7Rrlay/pP+IWCwkf7DxG3bFhAE+TmQBUGMUbLM84wgiIj0g2WJJwAAGikMZAHgBMgCgBHIAoARoyzvsN5ccK5kCusrn+rx9MHd1v3KqzyCt9z/j3gsLkz366sG42OS5X2fVPHTb+f3Wp/wqSyvNUz/Jgu9FCALaGGSJb5t3dJXI53Puw4XTckSd4vGrpTEyMfTWLGDNUWT9ymy0k7kl7bAJHa+pjxDWpsP/jBXHZvXKNdnnA+Mi0mWdkmJVDAWiYqUisaykAD+SSOOx4tc/PnT3Vn0+Lrb0dqau4ESVqwjHuc56Hpan5xDPEs8w895Mh8YGqMsFX775hLKXaUkFYmLSuXSY2IJdRmZriyH8WlcFJfuzzIK6k4hEgufZCnSS5mFLGpXKTmfD4zNZVmIWtzuH2Ili6H8hd+WpfX5aJaljJH05wNjY5IlFkiXLhaGikRv71IqUSSWhQrI13NRRTF3+H9RVxY9Ps0rdq5medNc5V7ieoss+b6X5gNDY9xZqCD1c0SX+eM/+Oq4Fq5eK+mP75VXfYp9EzYiZdnvlp4lr1F9itnmA+NilAUAAFkAMAJZADACWQAw0pSlCIMgSI30Q8mCIEg/kAVBTNnCF4vbfiXrQO6sAAAAAElFTkSuQmCC" InformativeScreenshot="b4d27571749091aa67742e5bb067682a.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='FedEx Ship Manager - Create Return Shipment' /&gt;" SearchSteps="FuzzySelector, Image">
+                        <uix:TargetAnchorable.Anchors>
+                          <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                            <uix:Target DesignTimeRectangle="829, 927, 68, 12" ElementType="Text" FriendlyName="'*Contact name'" FullSelectorArgument="&lt;webctrl parentid='from.contactName.label' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='from.contactName.label' tag='LABEL' type='' aaname='Contact name' check:text='*Contact name' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAEgAAAAQCAYAAAC1MDndAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGMSURBVFhH7VTbDYQgELxWbOxsBVsxdmJow4Qi/OZgH7AgiJ5+8jGJwjozO6x89n23HXX0gBroATXQA2ogDWib7TgMdiCMi0mKbwG4lNWlvQb09FD7RcSAVuVCGe288aax8/eBUeD7J6CHui8jBFQ8tc1Y7YDvaByni4PENTX5MHBPrX5dW0Xvw6Szbx2+szUVTrOMyXv0U9NyqEw+cE1z1HBeIn88PN97/i2DAsKGgmABQALNuvcwHdQgrYM4Ny8naNMuaObyWiIMWQ/PyHmcoLqWWV3jXBd4qIaDphCRN/YLNdyX8Ma6FBCdTjWgfJ+JsmaEuSQgwYEnhSbKd03GWVuXWh5yimRAoUY2H/uR08OQ2o1fjC/aSIh7NwOCZ/4+Gn0rIGxSaN0M6KgVcfmSBhOVX6xkOtaU1lEnaaDGGXAeUOKT1q8EBDXsE2rkIMiAPMBkedSYFPdSoWJAPPIQKgrDt3Rpsgk8fUS6Jg/L40RL+FYLT/21gHIPac95QB0H9IAa6AE10AM6xW5/zGjN70GmjYoAAAAASUVORK5CYII=" SearchSteps="FuzzySelector, Image" />
+                          </scg:List>
+                        </uix:TargetAnchorable.Anchors>
+                      </uix:TargetAnchorable>
+                    </uix:NTypeInto.Target>
+                    <uix:NTypeInto.Text>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_5">str_UserName</CSharpValue>
+                      </InArgument>
+                    </uix:NTypeInto.Text>
+                  </uix:NTypeInto>
+                  <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into '*Address 1'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="334,217" sap2010:WorkflowViewState.IdRef="NTypeInto_2" InteractionMode="DebuggerApi" ScopeIdentifier="d0eca8fc-fec9-4f0e-b552-5bf63b0db6f7" Text="300 N. Elizabeth Street" Version="V1">
+                    <uix:NTypeInto.Target>
+                      <uix:TargetAnchorable BrowserURL="https://www.fedex.com/shipping/navigationHeaderAction.do?method=doNewReturnShipment" DesignTimeRectangle="939, 954, 199, 18" ElementType="InputBox" FriendlyName="'INPUT fromData.addressL…'" FullSelectorArgument="&lt;webctrl id='fromData.addressLine1' tag='INPUT' type='text' /&gt;" FuzzySelectorArgument="&lt;webctrl id='fromData.addressLine1' tag='INPUT' type='text' aaname='*Address 1' /&gt;" Guid="233b51bd-f428-46c2-9047-436ff3a7d371" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAMsAAAAWCAYAAABuW2jCAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAB1SURBVHhe7dO7DYBAEENBqr7ONz5EAOxJfFzAjOTI8duqaprZ/8RiFm6JZYxhZm29jyuW4wBWPRixwAexQEgsEBILhMQCIbFASCwQEguExAIhsUBILBASC4TEAiGxQEgsEHqM5QzGzO71PpZYzOx9YjGLVnMHWcZyGS9pVB0AAAAASUVORK5CYII=" InformativeScreenshot="e8f06b3272655e858a5aa4215c0b0c0c.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='FedEx Ship Manager - Create Return Shipment' /&gt;" SearchSteps="Selector, FuzzySelector">
+                        <uix:TargetAnchorable.Anchors>
+                          <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                            <uix:Target DesignTimeRectangle="829, 954, 50, 12" ElementType="Text" FriendlyName="'*Address 1'" FullSelectorArgument="&lt;webctrl parentid='from.address1.label' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='from.address1.label' tag='LABEL' type='' aaname='Address 1' check:text='*Address 1' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAADYAAAAQCAYAAABdsIz2AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFCSURBVEhL7ZRtDoIwDIY9yi4GZxlXIdyE7BomHILfdd36tTmFGE0E/fFGKV37PrRwWdcVzqg/2NH0O2BhcOC6EZYqrgrgXQ/jtY4vMHYO/FzHP6nHPSswNO3BDy3jrG8BQx9xCFHbYLMHNwT9lXvZNBZxQwQ3YGnCGO9inMHwPF1zHcmL6qcl172O0FPMtWqiCh8s9OMhENwmWJBJ5ckFii9Tr+uJptlE+k95ZFLAjNF0XgzqxBGAISUn1eHej7aDtQssJpl3C5vmA3la8pQrY2rYrKIFployAVKql/Lw2pq329GaltUOsPTEqKkoFX4PmJ6/l/QuPlrZNMZbxm3OEzBjSm4qwGurqGDZuF2vnKdbQWewB9YRwJYvqy2wYq9V+qTteuz8eFT1JC+qnD7HtWaxPU/XcXNi59Mf7Gg6KdgKN7jx6Yin/VuyAAAAAElFTkSuQmCC" SearchSteps="FuzzySelector, Image" />
+                          </scg:List>
+                        </uix:TargetAnchorable.Anchors>
+                      </uix:TargetAnchorable>
+                    </uix:NTypeInto.Target>
+                  </uix:NTypeInto>
+                  <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Address 2'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="334,217" sap2010:WorkflowViewState.IdRef="NTypeInto_3" InteractionMode="DebuggerApi" ScopeIdentifier="d0eca8fc-fec9-4f0e-b552-5bf63b0db6f7" Text="3E" Version="V1">
+                    <uix:NTypeInto.Target>
+                      <uix:TargetAnchorable BrowserURL="https://www.fedex.com/shipping/navigationHeaderAction.do?method=doNewReturnShipment" DesignTimeRectangle="940, 979, 199, 18" ElementType="InputBox" FriendlyName="'INPUT fromData.addressL…'" FullSelectorArgument="&lt;webctrl id='fromData.addressLine2' tag='INPUT' type='text' /&gt;" FuzzySelectorArgument="&lt;webctrl id='fromData.addressLine2' tag='INPUT' type='text' aaname='Address 2' /&gt;" Guid="33f8acdf-49bb-4518-96e8-2abc21c68779" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAMsAAAAWCAYAAABuW2jCAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAB1SURBVHhe7dO7DYBAEENBqr7ONz5EAOxJfFzAjOTI8duqaprZ/8RiFm6JZYxhZm29jyuW4wBWPRixwAexQEgsEBILhMQCIbFASCwQEguExAIhsUBILBASC4TEAiGxQEgsEHqM5QzGzO71PpZYzOx9YjGLVnMHWcZyGS9pVB0AAAAASUVORK5CYII=" InformativeScreenshot="885e4a20199b0127b2c58144e31faca2.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='FedEx Ship Manager - Create Return Shipment' /&gt;" SearchSteps="Selector, FuzzySelector">
+                        <uix:TargetAnchorable.Anchors>
+                          <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                            <uix:Target DesignTimeRectangle="830, 979, 50, 12" ElementType="Text" FriendlyName="'Address 2'" FullSelectorArgument="&lt;webctrl parentid='from.address2.label' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='from.address2.label' tag='LABEL' type='' aaname='Address 2' check:text='Address 2' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAADYAAAAQCAYAAABdsIz2AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFMSURBVEhL7VTbDcIwDGSULNbOkq5SsQnKGpU6RL9NHT+TpoAQCFH4OEFdx76zrzktywJHxF/Yt+F3hKUhQOhGmKu4IUEMPYxTHZ9h7ALESx1/B6hXCIwhbXIqYUg6QhxaxAWfFzafeycG+QToz3ORUwq7RDogv/rOTWhYhTthecMY79a4CMPz/Cx1NM+TmEboORZaNRGNbdTA/JvCkm6KNpc4nick9kTSQiL/5zwmqcIc0e2E6Z0npDm5jvTec4dHO8cJWxPct4VNyVa0LZtIScwIOyt6wVxLN8DI9XIePnti3h33trVvfxWWJ+YaW+HXCKut4qG9i0sL+xCPFvG9TQlYWEu5HXzOiiaMiHt7UZ65gs9gD6yjAvc2gjWsfgskrPC1wSZNDWiLD14eVT3NW1FuX+JWs3BPw46+lqB2RHF5HAl/Yd+Ggwpb4AopS95fAEBLtwAAAABJRU5ErkJggg==" SearchSteps="FuzzySelector, Image" />
+                          </scg:List>
+                        </uix:TargetAnchorable.Anchors>
+                      </uix:TargetAnchorable>
+                    </uix:NTypeInto.Target>
+                  </uix:NTypeInto>
+                  <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into '*ZIP'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="334,217" sap2010:WorkflowViewState.IdRef="NTypeInto_4" InteractionMode="DebuggerApi" ScopeIdentifier="d0eca8fc-fec9-4f0e-b552-5bf63b0db6f7" Text="60607" Version="V1">
+                    <uix:NTypeInto.OutUiElement>
+                      <OutArgument x:TypeArguments="ui:UiElement">
+                        <CSharpReference x:TypeArguments="ui:UiElement" sap2010:WorkflowViewState.IdRef="CSharpReference`1_4">ui_Zipcode</CSharpReference>
+                      </OutArgument>
+                    </uix:NTypeInto.OutUiElement>
+                    <uix:NTypeInto.Target>
+                      <uix:TargetAnchorable BrowserURL="https://www.fedex.com/shipping/navigationHeaderAction.do?method=doNewReturnShipment" DesignTimeRectangle="939, 704, 85, 18" ElementType="InputBox" FriendlyName="'INPUT fromData.zipPosta…'" FullSelectorArgument="&lt;webctrl id='fromData.zipPostalCode' tag='INPUT' type='text' /&gt;" FuzzySelectorArgument="&lt;webctrl id='fromData.zipPostalCode' tag='INPUT' type='text' aaname='*ZIP' /&gt;" Guid="0eddb34b-e8e7-4419-b65e-2d3efe24830e" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAFkAAAAWCAYAAACrBTAWAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABmSURBVFhH7dAxCsAwDATB/FovV23jIkGGlNJWu3DVdfNk5nKzExnYhRwRrmnV9UM+h/VVoUUeSmQgkYFEBhIZSGQgkYFEBhIZSGQgkYFEBhIZSGQgkYF+kV9o17PqeiG7mYk8vlwbm/4M7LH7AegAAAAASUVORK5CYII=" InformativeScreenshot="ad76b1019c917615f3c0f256cbd1ebaa.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='FedEx Ship Manager - Create Return Shipment' /&gt;" SearchSteps="Selector, FuzzySelector">
+                        <uix:TargetAnchorable.Anchors>
+                          <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                            <uix:Target DesignTimeRectangle="829, 704, 17, 12" ElementType="Text" FriendlyName="'*ZIP'" FullSelectorArgument="&lt;webctrl parentid='from.zipPostal.label' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='from.zipPostal.label' tag='LABEL' type='' aaname='ZIP' check:text='*ZIP' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAABUAAAAQCAYAAAD52jQlAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACPSURBVDhP7ZDbDYAgDEVdpYvJKrgKcRPDGiYM0e+rPIxKMQT1Tz9uUujt6aNjZrytH+oDB9MTiDL1Bi7l1OgufXoqQqXscAbJOHknvYI17KG2CHWjAg02vStQttCkYOa9XkJ957D29vd00tlAZYYStOGmco2oyqQFJWg05x2PuXZouItcK97q9qTv6tNQxgLWX592fjfqQAAAAABJRU5ErkJggg==" SearchSteps="FuzzySelector, Image" />
+                          </scg:List>
+                        </uix:TargetAnchorable.Anchors>
+                      </uix:TargetAnchorable>
+                    </uix:NTypeInto.Target>
+                  </uix:NTypeInto>
+                  <uix:NKeyboardShortcuts DelayBetweenShortcuts="{x:Null}" ActivateBefore="True" ClickBeforeMode="None" DisplayName="Keyboard Shortcuts" sap:VirtualizedContainerService.HintSize="334,178" sap2010:WorkflowViewState.IdRef="NKeyboardShortcuts_1" Shortcuts="[d(hk)][k(enter)][u(hk)]" Version="V1">
+                    <uix:NKeyboardShortcuts.InUiElement>
+                      <InArgument x:TypeArguments="ui:UiElement">
+                        <CSharpValue x:TypeArguments="ui:UiElement" sap2010:WorkflowViewState.IdRef="CSharpValue`1_11">ui_Zipcode</CSharpValue>
+                      </InArgument>
+                    </uix:NKeyboardShortcuts.InUiElement>
+                  </uix:NKeyboardShortcuts>
+                  <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into '*Phone NumberPhone no.'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="334,217" sap2010:WorkflowViewState.IdRef="NTypeInto_5" InteractionMode="DebuggerApi" ScopeIdentifier="d0eca8fc-fec9-4f0e-b552-5bf63b0db6f7" Text="7739220029" Version="V1">
+                    <uix:NTypeInto.Target>
+                      <uix:TargetAnchorable BrowserURL="https://www.fedex.com/shipping/navigationHeaderAction.do?method=doNewReturnShipment" DesignTimeRectangle="939, 779, 103, 18" ElementType="InputBox" FriendlyName="'INPUT fromData.phoneNum…'" FullSelectorArgument="&lt;webctrl id='fromData.phoneNumber' tag='INPUT' type='text' /&gt;" FuzzySelectorArgument="&lt;webctrl id='fromData.phoneNumber' tag='INPUT' type='text' aaname='*Phone NumberPhone no.' /&gt;" Guid="18651530-288c-4135-b26e-3573ded89739" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAGsAAAAWCAYAAADHA2ITAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEzSURBVGhD7Zm9agJBFEbzEr5FniIPYJ8qvkHstk0RuxR2FjaxDQHRIp2QnyaQTtFSU2gT660NZ+BeXMZS4Q58H3ysnmHXHQ7uzrJXdV0f1DKaZLVbT14buLseONtt9ol1b0bOFt+/iT3cvjr7mq4S69+/OZsOfxJ7fnx3xmcYY8bYB8YxjHFsGL9ljHOAbdd/zjhXGDVGjV1yLqPeR2Kn5vI5WTo7x1xcFtuqqtRgPfbjshhQ4gUvDVlUsmLG/l2SVUAyWbOXuWQFDV7w47J0z4obvGiBUUgyWb3OWLKCBi/4cVlUsmIGL+ZIsoInk6XLYNzgpXEZ1AIjbvCi1WAhyWTpoThu8NJ4KKaSFTN4MUeSFTyZLN2z4gYv2QKDLQNqrB77cVlWvlO91g/6Wl8tofXhH5sN2kDjjY9cAAAAAElFTkSuQmCC" InformativeScreenshot="58d78ff3711d23b2e5ada473603e8ea9.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='FedEx Ship Manager - Create Return Shipment' /&gt;" SearchSteps="Selector, FuzzySelector">
+                        <uix:TargetAnchorable.Anchors>
+                          <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                            <uix:Target DesignTimeRectangle="829, 779, 50, 12" ElementType="Text" FriendlyName="'*Phone NumberPhone no.'" FullSelectorArgument="&lt;webctrl parentid='from.phone.label' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='from.phone.label' tag='LABEL' type='' aaname='' check:text='*Phone NumberPhone no.' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAADYAAAAQCAYAAABdsIz2AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEKSURBVEhL7VRbDoQgDNyrcDG5Cl6FeBPDNUw4BN9dKRRaFbOvj5X4MYmW2s5Mi48QAvSIW9jV0L8wNypQSkJPHs/8pEENFnzOvQKksNHVw8WCVhrs0puw4MEOCsxMwgyY9R2nyfNmU6dM8Rjj+dwUNCzHlQFH8QIHZjXUjGtPzEnmprPEaR/f4/WJUSEWF8+5Ka4viqV4JJoMItIpnusKM2s+XQPOS3DEHkfGJHxwxxg5nEydRiEqmtbJy2kRtuS4EVw8q1PyqklbnKxixW+FtV1O+Adhp6t4ICyTPv/btoR9s4rvCovv2CCuVKvpxmmxjkfE2sKoVvq2cog5ZBahCOsNt7CroVNhAZ6nI/a6AeFP2wAAAABJRU5ErkJggg==" SearchSteps="FuzzySelector, Image" />
+                          </scg:List>
+                        </uix:TargetAnchorable.Anchors>
+                      </uix:TargetAnchorable>
+                    </uix:NTypeInto.Target>
+                  </uix:NTypeInto>
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence sap2010:WorkflowViewState.IdRef="Sequence_9">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </Sequence>
+              </If.Else>
+            </If>
+            <Sequence DisplayName="Package &amp; Shipment" sap:VirtualizedContainerService.HintSize="484,66" sap2010:WorkflowViewState.IdRef="Sequence_12">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <uix:NSelectItem DisplayName="Select Item '*Return label type'" sap:VirtualizedContainerService.HintSize="334,156" sap2010:WorkflowViewState.IdRef="NSelectItem_3" Item="Print" ScopeIdentifier="d0eca8fc-fec9-4f0e-b552-5bf63b0db6f7" Version="V1">
+                <uix:NSelectItem.Items>
+                  <scg:List x:TypeArguments="x:String" Capacity="5">
+                    <x:String>Select</x:String>
+                    <x:String>Print</x:String>
+                    <x:String>Email Label</x:String>
+                    <x:String>Express Tag</x:String>
+                    <x:String>Ground Call Tag</x:String>
+                  </scg:List>
+                </uix:NSelectItem.Items>
+                <uix:NSelectItem.Target>
+                  <uix:TargetAnchorable BrowserURL="https://www.fedex.com/shipping/navigationHeaderAction.do?method=doNewReturnShipment" DesignTimeRectangle="939, 933, 215, 16" ElementType="DropDown" FriendlyName="'Select'" FullSelectorArgument="&lt;webctrl id='psdData.returnLabelType' tag='SELECT' /&gt;" FuzzySelectorArgument="&lt;webctrl id='psdData.returnLabelType' tag='SELECT' type='' aaname='*Return label type' /&gt;" Guid="b91c3d14-359c-4151-b379-a4cdded768c5" ImageBase64="" InformativeScreenshot="74a8afa729b2bcf8b6eaca1b2d889c5d.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='FedEx Ship Manager - Create Return Shipment' /&gt;" SearchSteps="Selector, FuzzySelector">
+                    <uix:TargetAnchorable.Anchors>
+                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                        <uix:Target DesignTimeRectangle="829, 933, 83, 12" ElementType="Text" FriendlyName="'*Return label type'" FullSelectorArgument="&lt;webctrl parentid='psd.returnLabelType.label' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='psd.returnLabelType.label' tag='LABEL' type='' aaname='Return label type' check:text='*Return label type' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAFcAAAAQCAYAAABjleO4AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHbSURBVFhH7ZVNjoMwDIXnKrlYuUq4CuImiPXcoBKHYJ1J/Bc7TQozgmoWWTypdRz7+asLX/u+h6571OHeqA73RnW4N0rgrqMLzhV6TGFTyTVt8xDcuFbP/q4tTA8X/FI7Y63BuyFMz9pZTY385xQG58OqYxfJwjWQkpmjAWv3rtAH4S4+LtLH4WJsmDf6jrBxq8kkGMOYXxCI5Kcz2nzcbg/3h/kbwcXv+W7uibJw7b+KQSAsP8baEFfgYBvr+RauminObuaVjSYvc66Z/VaYSO3Tm1tskgKX7x3AlSExj3vB2cvjR/eLQ8swNg6DvdSxEPNjy8ZFenPTZ11PzSUeJV97oXgxx/tnLjWyvxALjZ6GK43beezFQkRpfxqu5PCmma1lJRgn4EIOfk79sHbpheu0mXDtxuYWxlvGom6HS7AwXw9aeDRwGZZWYwYDl6GmXI69g1tnwmo/FsAkX8YGcq4M6Xsvny+DS4MSaA2X++UeGOf6Nn4MN/Xwj3hHWLRmbzPBewcvNDAmhmgYUDaJOTQwNMAceGFdAZeHSHVj3hR94l30k1+MChz9CBjngRtwObeAmTeV/CbgVDOf1ZmwBG4XSf9TQMUy/EIdrhb98yzIDvdfqsO9TXv4AXO08q5LIDt2AAAAAElFTkSuQmCC" SearchSteps="FuzzySelector, Image" />
+                      </scg:List>
+                    </uix:TargetAnchorable.Anchors>
+                  </uix:TargetAnchorable>
+                </uix:NSelectItem.Target>
+              </uix:NSelectItem>
+              <uix:NSelectItem DisplayName="Select Item '1'" sap:VirtualizedContainerService.HintSize="334,156" sap2010:WorkflowViewState.IdRef="NSelectItem_4" ScopeIdentifier="d0eca8fc-fec9-4f0e-b552-5bf63b0db6f7" Version="V1">
+                <uix:NSelectItem.Item>
+                  <InArgument x:TypeArguments="x:String">
+                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_7">int_NumberOfReturns.ToString()</CSharpValue>
+                  </InArgument>
+                </uix:NSelectItem.Item>
+                <uix:NSelectItem.Items>
+                  <scg:List x:TypeArguments="x:String" Capacity="10">
+                    <x:String>1</x:String>
+                    <x:String>2</x:String>
+                    <x:String>3</x:String>
+                    <x:String>4</x:String>
+                    <x:String>5</x:String>
+                    <x:String>6</x:String>
+                    <x:String>7</x:String>
+                    <x:String>8</x:String>
+                    <x:String>9</x:String>
+                    <x:String>10</x:String>
+                  </scg:List>
+                </uix:NSelectItem.Items>
+                <uix:NSelectItem.Target>
+                  <uix:TargetAnchorable BrowserURL="https://www.fedex.com/shipping/navigationHeaderAction.do?method=doNewReturnShipment" DesignTimeRectangle="939, 959, 50, 16" ElementType="DropDown" FriendlyName="'1'" FullSelectorArgument="&lt;webctrl id='psdData.numberOfPackages' tag='SELECT' /&gt;" FuzzySelectorArgument="&lt;webctrl id='psdData.numberOfPackages' tag='SELECT' type='' aaname='Number of packages' /&gt;" Guid="5464b06c-f67d-463a-8523-e532e2550ed6" ImageBase64="" InformativeScreenshot="1f1c5ef977fdbb6a7638938d6944780b.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='FedEx Ship Manager - Create Return Shipment' /&gt;" SearchSteps="Selector, FuzzySelector" />
+                </uix:NSelectItem.Target>
+              </uix:NSelectItem>
+              <If DisplayName="If multiple items" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="If_4">
+                <If.Condition>
+                  <InArgument x:TypeArguments="x:Boolean">
+                    <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_8">int_NumberOfReturns &gt; 1</CSharpValue>
+                  </InArgument>
+                </If.Condition>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <If.Then>
+                  <Sequence sap:VirtualizedContainerService.HintSize="376,248" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <uix:NClick ClickType="Single" DisplayName="Click 'unchecked'" sap:VirtualizedContainerService.HintSize="334,156" sap2010:WorkflowViewState.IdRef="NClick_2" InteractionMode="DebuggerApi" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="d0eca8fc-fec9-4f0e-b552-5bf63b0db6f7" Version="V1">
+                      <uix:NClick.Target>
+                        <uix:TargetAnchorable BrowserURL="https://www.fedex.com/shipping/navigationHeaderAction.do?method=doNewReturnShipment" DesignTimeRectangle="944, 1185, 13, 13" ElementType="RadioButton" FriendlyName="'INPUT psdData.arePackag…'" FullSelectorArgument="&lt;webctrl id='psdData.arePackagesIdentical.Yes' tag='INPUT' type='radio' /&gt;" FuzzySelectorArgument="&lt;webctrl id='psdData.arePackagesIdentical.Yes' tag='INPUT' type='radio' aaname='*Are packages identical' /&gt;" Guid="35711c56-8f44-498c-a68a-7e7b518e866d" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAABEAAAARCAYAAAA7bUf6AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACpSURBVDhPtZNBDsMgDAT7a848gEdw4MRPuPEVJM5bTSSiFLdqmtCVVshmWWyTPHrvusv/mdRaFWOU917OuW0lJv9Ob0xyzgohqJSi1poAKzF59uczLyYIUkrbwU9gfzbaTSiVm84A3bG13YSeKfkM0KE3JgxvzOAb0KE3JrzCL0BvTJZUsmQmS14H3v5OBhFwEyWPGbESk58NoDGBlErPDO/Sv3OFC0y6nrumMpFmGSbkAAAAAElFTkSuQmCC" InformativeScreenshot="b7998f208f064ca72f07c82e710a6a25.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='FedEx Ship Manager - Create Return Shipment' /&gt;" SearchSteps="Selector, FuzzySelector">
+                          <uix:TargetAnchorable.Anchors>
+                            <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                              <uix:Target DesignTimeRectangle="829, 1182, 67, 24" ElementType="Text" FriendlyName="'unchecked'" FullSelectorArgument="&lt;webctrl parentid='psd.arePackagesIdentical.label' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='psd.arePackagesIdentical.label' tag='LABEL' type='' aaname='Are packages identical' check:text='unchecked' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAEcAAAAcCAYAAAAz+aIrAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAKKSURBVGhD7ZfZbcMwDIa7iheLV3FWMbJJoDUCZIg8qzzEQ4dVo2kbN9DDj8YSD/ETJbsfj8cjDrU14HQ04HQ04HRUwQnnKU6nNd6L8dfoHtfTFOfLvTH3+yrghLhMS1zOc1xvfvxVOhKc6xKnc7C/afx+meEZoE2yUIQIHUZqg2SflYojO43HBbMvyHUpdW0aX65mm+VMcbztBBsayhgnWC/4chzQbY1zzx7lakZlcIJ2DHeQBKBC9ZkXrEkRZOMYso+Pl3xuIQaFiePJBuNIDioEfwuckOcEv6C/3XqqGOLj8sAcbxyA0Dy1DcrBgcliF2UxFEznuFClTcqDqo/bCYxnx8N3D/uW9pVdNZfvOq6VntXOQcu6RmTw6bkRX+HwTntnc6jh1DBKbcKh3a13tAen6pxULMM2CH040iEt2YZrDlCC4wJlDm7hCifRlkX4VnZi2L5lU3x/DMk3ga6OBI4LHIDgC6x+u9it8ZRfOlfrQZuirhqOT+Yku53DQRnp7oV8mmmBvgsz33Rhy4IYKM/5rpCirDPSBqEtrGuVrhQbGt93IfucZedmF/JPqgb6xyIY7Y3bq/eCQ8dKusO66bv6NTjvoAGnowSnvqn74/ukr2/35mvZbeu5/M/qi855ZnHs+9y5PwScfBFbr8P2a4+7Av9Z5TnuELPFZ985nMvbUpziMuWcR4Oz9SGF480PJv5u2foWKY9V9hZzMcPVvjHIxsU4DBwrLh/PukZEdgxHCigLK+HYPWSLUPnu+XdwdNzrJ+CwrXTRYTune6yKe8MK3w+H5v2xolweAv8+Jhx4pu7B1t59IbfgSByEYnCy+KUfjYHdRe6iQ8AZamnA6WjA6WjA2dQjfgJDRU+ebh9x9QAAAABJRU5ErkJggg==" SearchSteps="FuzzySelector, Image" />
+                            </scg:List>
+                          </uix:TargetAnchorable.Anchors>
+                        </uix:TargetAnchorable>
+                      </uix:NClick.Target>
+                    </uix:NClick>
+                  </Sequence>
+                </If.Then>
+                <If.Else>
+                  <Sequence sap2010:WorkflowViewState.IdRef="Sequence_14">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </Sequence>
+                </If.Else>
+              </If>
+              <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Weight'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="334,217" sap2010:WorkflowViewState.IdRef="NTypeInto_7" InteractionMode="DebuggerApi" ScopeIdentifier="d0eca8fc-fec9-4f0e-b552-5bf63b0db6f7" Text="10" Version="V1">
+                <uix:NTypeInto.Target>
+                  <uix:TargetAnchorable BrowserURL="https://www.fedex.com/shipping/navigationHeaderAction.do?method=doNewReturnShipment" DesignTimeRectangle="939, 1207, 61, 18" ElementType="InputBox" FriendlyName="'INPUT psd.mps.row.weigh…'" FullSelectorArgument="&lt;webctrl id='psd.mps.row.weight.0' tag='INPUT' type='text' /&gt;" FuzzySelectorArgument="&lt;webctrl id='psd.mps.row.weight.0' tag='INPUT' type='text' aaname='Weight' /&gt;" Guid="669b23da-1bba-4ea6-90f2-59aa8db9d2a2" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAEEAAAAWCAYAAACffPEKAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABYSURBVFhH7dCxDcAwDMTAbK3JVdtMkUAGvMGTwFeqdE93r/SJwA6EqorZ/PtHeA9JTQgRRBBBBBFIBBKBRCARSAQSgUQgEUgEEoGuCB9EyubfB0LqROheGyYZLHT1hnuaAAAAAElFTkSuQmCC" InformativeScreenshot="864536a3833376f9fc30efff3fc06925.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='FedEx Ship Manager - Create Return Shipment' /&gt;" SearchSteps="Selector, FuzzySelector">
+                    <uix:TargetAnchorable.Anchors>
+                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                        <uix:Target DesignTimeRectangle="829, 1210, 34, 12" ElementType="Text" FriendlyName="'Weight'" FullSelectorArgument="&lt;webctrl id='psd.weight.text' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl id='psd.weight.text' tag='LABEL' type='' aaname='Weight' check:text='Weight' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAACYAAAAQCAYAAAB6Hg0eAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEeSURBVEhL7ZTRDYQgDIZvFRaTVWAV4yaGNUwYguceBdqCokZzJj7cw59wLZSPvz0/IQR4o/5gV/VysGUErQw4TngYBwVqGMFTbDbt75X8pEFZ181lOTBKgZm3ud7Z4hge0jAuJYGggwETRbDnF59pH8zZaEIfLCfpEELoyTex9VrFS1C4j85wcXQ35TUYS/ECZiWXjOC9LbTMGG4ohV0sxoe4aHavdU6clnjtTBmJKi539NckAUvtwxkSCI5xrnWLhK4xWHKgNwI1cPvAY7D0uliwcq6OUcuwCK1rPQiGG/JM1L3OMcN/jFSQL5bL+gDbVt4CW792L1a38/Lwd8DyYyWHasF+ruxYr/VnegAsO0OOHn2Uj/SwY/f1UrAAX1KCPlhQJimIAAAAAElFTkSuQmCC" SearchSteps="FuzzySelector, Image" />
+                      </scg:List>
+                    </uix:TargetAnchorable.Anchors>
+                  </uix:TargetAnchorable>
+                </uix:NTypeInto.Target>
+              </uix:NTypeInto>
+              <uix:NSelectItem DisplayName="Select Item '*Service type'" sap:VirtualizedContainerService.HintSize="334,156" sap2010:WorkflowViewState.IdRef="NSelectItem_5" Item="FedEx 2Day" ScopeIdentifier="d0eca8fc-fec9-4f0e-b552-5bf63b0db6f7" Version="V1">
+                <uix:NSelectItem.Items>
+                  <scg:List x:TypeArguments="x:String" Capacity="7">
+                    <x:String>Select</x:String>
+                    <x:String>----------------------------------</x:String>
+                    <x:String>Priority Overnight</x:String>
+                    <x:String>Standard Overnight</x:String>
+                    <x:String>FedEx 2Day</x:String>
+                    <x:String>----------------------------------</x:String>
+                    <x:String>FedEx Ground</x:String>
+                  </scg:List>
+                </uix:NSelectItem.Items>
+                <uix:NSelectItem.Target>
+                  <uix:TargetAnchorable BrowserURL="https://www.fedex.com/shipping/navigationHeaderAction.do?method=doNewReturnShipment" DesignTimeRectangle="939, 1257, 215, 16" ElementType="DropDown" FriendlyName="'Select'" FullSelectorArgument="&lt;webctrl id='psdData.serviceType' tag='SELECT' /&gt;" FuzzySelectorArgument="&lt;webctrl id='psdData.serviceType' tag='SELECT' type='' aaname='*Service type' /&gt;" Guid="32a14379-709b-4f60-9379-cd9a73df1673" ImageBase64="" InformativeScreenshot="44d9284cd850ad4e832638dd1057eee0.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='FedEx Ship Manager - Create Return Shipment' /&gt;" SearchSteps="Selector, FuzzySelector">
+                    <uix:TargetAnchorable.Anchors>
+                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                        <uix:Target DesignTimeRectangle="829, 1257, 61, 12" ElementType="Text" FriendlyName="'*Service type'" FullSelectorArgument="&lt;webctrl parentid='psd.serviceType.label' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='psd.serviceType.label' tag='LABEL' type='' aaname='Service type' check:text='*Service type' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAEEAAAAQCAYAAABJJRIXAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGaSURBVFhH7ZTLbcMwDIa7ihaL1+hRPnQRIxN0hcBrBPAQPrPiQxQpKXbSB9oiPvyAJVF8fKT8sq4rPLsOCEkHhKQDQpKBsMB0ChBC1gDT1Rt/SpcI4TTB0jt7QPMYYDgv3bOvSiEs58ElS+sQYZb174ob9OMQkHQY58Ygi85lSjQZ6nKEiBP0+gaDgaZQ7SRcp2Qjfhrgst/JoZyn6Xy3k8Vw4kVsxqlMs/Gz5988hxliNqwmgAPky2gnTwUL1GdTEkI7hEbfCsF3U8fbPRfvo8jexfiSH0Hlby4058K1+PjFT+2/+2NUcnLZTkGWFlB1v0lUkzDwxN7Fsmq61QLUAsXWN6pAvsd/FwKrJK1dq20qCNQZLNgkdxeEpuhaHkIuXmGkvU0IO/4FAgfxxqWbTDMXi/umExYC+UnTYEdOIbTdpHjkwz+pFni9n9ZjimNib+e47f/GPwHlu0ZJy5k6aSB09hQCrm2MugDZv9E1jl9yqjtMa2xAx8+e/43n8JfFHdVpS2IIGfZj+ocQZJqqgp8MwvfrgLCu8AEaVkd1rQGLaAAAAABJRU5ErkJggg==" SearchSteps="FuzzySelector, Image" />
+                      </scg:List>
+                    </uix:TargetAnchorable.Anchors>
+                  </uix:TargetAnchorable>
+                </uix:NSelectItem.Target>
+              </uix:NSelectItem>
+              <uix:NSelectItem DisplayName="Select Item '*Package type'" sap:VirtualizedContainerService.HintSize="334,156" sap2010:WorkflowViewState.IdRef="NSelectItem_6" Item="FedEx Box" ScopeIdentifier="d0eca8fc-fec9-4f0e-b552-5bf63b0db6f7" Version="V1">
+                <uix:NSelectItem.Items>
+                  <scg:List x:TypeArguments="x:String" Capacity="6">
+                    <x:String>Select</x:String>
+                    <x:String>FedEx Envelope</x:String>
+                    <x:String>FedEx Pak</x:String>
+                    <x:String>FedEx Box</x:String>
+                    <x:String>FedEx Tube</x:String>
+                    <x:String>Your Packaging</x:String>
+                  </scg:List>
+                </uix:NSelectItem.Items>
+                <uix:NSelectItem.Target>
+                  <uix:TargetAnchorable BrowserURL="https://www.fedex.com/shipping/navigationHeaderAction.do?method=doNewReturnShipment" DesignTimeRectangle="939, 1280, 215, 16" ElementType="DropDown" FriendlyName="'Select'" FullSelectorArgument="&lt;webctrl id='psdData.packageType' tag='SELECT' /&gt;" FuzzySelectorArgument="&lt;webctrl id='psdData.packageType' tag='SELECT' type='' aaname='*Package type' /&gt;" Guid="ca95409b-194b-43af-886b-9e3585da5bea" ImageBase64="" InformativeScreenshot="011a695f6f5c56fd7cf92da4e43354f0.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='FedEx Ship Manager - Create Return Shipment' /&gt;" SearchSteps="Selector, FuzzySelector">
+                    <uix:TargetAnchorable.Anchors>
+                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                        <uix:Target DesignTimeRectangle="829, 1280, 67, 12" ElementType="Text" FriendlyName="'*Package type'" FullSelectorArgument="&lt;webctrl parentid='psd.packageType.label' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='psd.packageType.label' tag='LABEL' type='' aaname='Package type' check:text='*Package type' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAEcAAAAQCAYAAABEO2JQAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGySURBVFhH7VTBjcQgDLxW0timFdJKtJ2s+FwRkVJE3pwNGMaQsGSlvduT8hiJgLHH4wlf27a5C/u4xGngEqeBS5wGkjh2GtwwaIz3tbrwHKubb6/ePQ/m/a5aWpzJ5sNlduMwunnJwX34TXHeW+tYnFjYPPI6ueo2uxXvxX2MDYStM3wW82p3GmfLHDfjTKpJ8AOq4wXrfYxnNMRvjtU5PYeH8XznVCNzz/cJqveAPucs1tnkIG447nNhIeTjeS3iWBA33LNpDcJXOeQO1KEz30jVAA6C1xJfctwZXBQtCAV8IP+JNyckCGehcIuwj9uZBtZhMnooQFK5RlC6B5qlb+bj13xXGlciZM7KNYKCb+O3Aij181Ta0yycE5vNU+4RpxSjhBZHRLEiEu+1xDnqN6JfHJzE4W/F+0AYG6zWUYQqBw5BuwKbDCjEIdiJhEm/FwH5YvzRfsrdK04kGqxHjxslEkegPUNyXSjnDfs+lprkB1LF+P1zD3K+W4iBIkYRRqitXCT5d3pP4nwEvBjQ6AtgsZQD0Jkn8ffiePJxeoTS2v0QZxZC/GtxPhiXOIfY3A+tFXcXhNI8eQAAAABJRU5ErkJggg==" SearchSteps="FuzzySelector, Image" />
+                      </scg:List>
+                    </uix:TargetAnchorable.Anchors>
+                  </uix:TargetAnchorable>
+                </uix:NSelectItem.Target>
+              </uix:NSelectItem>
+            </Sequence>
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Your reference'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="484,217" sap2010:WorkflowViewState.IdRef="NTypeInto_8" InteractionMode="DebuggerApi" ScopeIdentifier="d0eca8fc-fec9-4f0e-b552-5bf63b0db6f7" Version="V1">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable BrowserURL="https://www.fedex.com/shipping/navigationHeaderAction.do?method=doNewReturnShipment" DesignTimeRectangle="1303, 510, 175, 18" ElementType="InputBox" FriendlyName="'INPUT billingData.yourR…'" FullSelectorArgument="&lt;webctrl id='billingData.yourReference' tag='INPUT' type='text' /&gt;" FuzzySelectorArgument="&lt;webctrl id='billingData.yourReference' tag='INPUT' type='text' aaname='&amp;#x9; Your reference' /&gt;" Guid="e951ecb8-ed83-49f2-9675-524aa48e7c40" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAALMAAAAWCAYAAACLxa2uAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABzSURBVGhD7dIxCsNAEARB//pefrGEApsT+APbVMFEk/Zn732ZFSZmy+wV81rLbNTOfn8xPwdMcwYtZkYTMxliJkPMZIiZDDGTIWYyxEyGmMkQMxliJkPMZIiZDDGTIWYy/sb8Ddps0s5+XzGbTZ6YLbJ93T+glp+iIxXCAAAAAElFTkSuQmCC" InformativeScreenshot="b481c3a8bf6c4d60dce3606f214e9947.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='FedEx Ship Manager - Create Return Shipment' /&gt;" SearchSteps="Selector, FuzzySelector">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target DesignTimeRectangle="1193, 510, 72, 12" ElementType="Text" FriendlyName="'Your reference'" FullSelectorArgument="&lt;webctrl parentid='billing.yourReference.label' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='billing.yourReference.label' tag='LABEL' type='' aaname='&amp;#x9; Your reference' check:text='Your reference' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAEwAAAAQCAYAAAC825mnAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAF9SURBVFhH7VRbjsMgDNyrcLHkKvQqUW9S5RqVcoh8e+MXYBristK2P3yMlIA9jMeGn33fYeB9DMM6MQzrxDCsE2zYI0IIEVazucEyBZjvW7H2ITwXmEM4NM2wPE/2v4g0Ydt9hnBb00b9/0l882wPxZXEidKOrhCLiaMCqOPFxJmp5GmMD1mfIsTjvy6ajTj2Eg+ew7xpmoi3POsk5l0u1XXEKSdpLDTXvHm6EfWtq98wFHsUud4KYmMMi0rGtAxrXCU2/iQH/zFvWmDTODLbiXG5xBRpHOWU+fKd47G+uim26S+PPppVBtVJuE8dJWNahum6hRFpJkLBYvOZTozLxbrMrZCcVAflC8x0KWwtL4bVBv2vYReTmAy7iHG5/mLYuXaFa5g1gDtJxhC5iJTO9Blmr0uZlzU4MS5X2zCTn+K5Po23ZzB8w3RNRjR3RUTiujzyfYYhWCBz5wmxGi5iXK62YfhPz4/kkHZc73r0B1wMwzoxDOvEMKwLO/wCBO68WPDqJZ0AAAAASUVORK5CYII=" SearchSteps="FuzzySelector, Image" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NTypeInto.Target>
+              <uix:NTypeInto.Text>
+                <InArgument x:TypeArguments="x:String">
+                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_9">str_ReturnReference</CSharpValue>
+                </InArgument>
+              </uix:NTypeInto.Text>
+            </uix:NTypeInto>
+            <Sequence DisplayName="Special Services" sap:VirtualizedContainerService.HintSize="484,66" sap2010:WorkflowViewState.IdRef="Sequence_17">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <If sap:VirtualizedContainerService.HintSize="484,827" sap2010:WorkflowViewState.IdRef="If_5">
+                <If.Condition>
+                  <InArgument x:TypeArguments="x:Boolean">
+                    <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_10">bool_IsLaptopShipment</CSharpValue>
+                  </InArgument>
+                </If.Condition>
+                <If.Then>
+                  <Sequence sap:VirtualizedContainerService.HintSize="376,640" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <uix:NClick ClickType="Single" DisplayName="Click 'Edit'" sap:VirtualizedContainerService.HintSize="334,156" sap2010:WorkflowViewState.IdRef="NClick_3" InteractionMode="DebuggerApi" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="d0eca8fc-fec9-4f0e-b552-5bf63b0db6f7" Version="V1">
+                      <uix:NClick.Target>
+                        <uix:TargetAnchorable BrowserURL="https://www.fedex.com/shipping/navigationHeaderAction.do?method=doNewReturnShipment" DesignTimeRectangle="1497, 635, 23, 14" ElementType="Text" FriendlyName="'Edit'" FullSelectorArgument="&lt;webctrl parentid='module.ss._headerEdit' tag='A' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='module.ss._headerEdit' tag='A' type='' aaname=' Edit ' check:text='Edit' /&gt;" Guid="c4e8aa83-8f50-4d00-bbd8-dbd415cd78d6" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAABsAAAASCAYAAACq26WdAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAC1SURBVEhL7ZJLDoQgDIblWJyDxAOZXgVPwRoP4sJjdGotCL4yEwU38ydNtIV+fdBgRf1hjyiDTb1BpdTeOi8nUk1oW4q1lr5IA/BZGDhImuOA6c0DmEE7iuNSG9hGvpsLvQXzCKFbqhpOOssntOb7CbZUK/HRomHo8Ri/7CxUtNqSQLqK+7ve2c0xvgGLD6IoLCQovLNdN+w7f40s+U99Gay0IkxrHSt52pxzzHinsxqqCEP8AHabX4k2IFgpAAAAAElFTkSuQmCC" InformativeScreenshot="f5477800fa548b097c3eec9b960a2533.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='FedEx Ship Manager - Create Return Shipment' /&gt;" SearchSteps="Selector, FuzzySelector, Image" />
+                      </uix:NClick.Target>
+                    </uix:NClick>
+                    <uix:NCheck Action="Check" DisplayName="Check/Uncheck 'unchecked'" sap:VirtualizedContainerService.HintSize="334,156" sap2010:WorkflowViewState.IdRef="NCheck_1" ScopeIdentifier="d0eca8fc-fec9-4f0e-b552-5bf63b0db6f7" Version="V1">
+                      <uix:NCheck.Target>
+                        <uix:TargetAnchorable BrowserURL="https://www.fedex.com/shipping/navigationHeaderAction.do?method=doNewReturnShipment" DesignTimeRectangle="1197, 714, 13, 13" ElementType="CheckBox" FriendlyName="'Checkbox'" FullSelectorArgument="&lt;webctrl id='ss.lithiumBatteriesCells.chbx' tag='INPUT' type='checkbox' /&gt;" FuzzySelectorArgument="&lt;webctrl id='ss.lithiumBatteriesCells.chbx' tag='INPUT' type='checkbox' aaname='Lithium Batteries/Cells' /&gt;" Guid="5844c8d2-0dc6-4661-87cd-5f6a02bbe0a0" ImageBase64="" InformativeScreenshot="566d8abd2f400b9b4b1cff5df5c3a871.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='FedEx Ship Manager - Create Return Shipment' /&gt;" SearchSteps="Selector, FuzzySelector">
+                          <uix:TargetAnchorable.Anchors>
+                            <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                              <uix:Target DesignTimeRectangle="1213, 717, 109, 12" ElementType="Text" FriendlyName="'unchecked'" FullSelectorArgument="&lt;webctrl parentid='ss.lithiumBatteriesCells.chbxLine' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='ss.lithiumBatteriesCells.chbxLine' tag='LABEL' type='' aaname='Lithium Batteries/Cells' check:text='unchecked' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAHEAAAAQCAYAAAAh1pAvAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAJDSURBVFhH7VbRjYMwDL1VGO3YhS5yP4gdboKKOSp1iVxsx/YLJMCp7QcoT4pqLNt59jOoX6Hh9GgiXgBNxAugiXgBmIjzrQvdbU5PimcYv7sw3Mmew9D1YXxE8z6ErhuiZwmIeRceY+i7yA3P9xiZbeM59dYP2sfwYh80H71vwb+fdpn7zKnOgV53RAQwmT0RPwC8l4GLVQf2s9vbm0H3mQgF7ttCvl1ELSi/9hYkEQfKyd4M32De/pr/Nnq9eCf7eFMLi7EnInNJteLx4aXnH7A5h7hovNcVXrGn6O+n3+xN5NmkHBcA6wAf5id9UN5KsMczzPEISlzKIvqM4lkIe/xzunoT86G4LTGbImqd9KmRRrEOIMVYAxYvmO/OWYSQZ+zH7cICZEPSJVrwtblU/FCH+bJd6cdQ41IS0e9d5UW8IKI2jEUXTWpjB/wlcgy8lyFx2YYznyTySji0ZbC4ELpQNV6cu8jhu2G5kDPVEW6Vfgw1LpAHy2E8jKPjhCKmGsxVcrSe+/N+chHzWooaL8rNFmYJWyCaB/Hx+sVc7odia1xgDiCiIPUb78O6HxMxi2Fb/K+LKHHrbRd7W8Q8BjnWeLHfeiW/3Ed+G2QmjMZGQN+CNfc1F+iJfMwpr7tcjlxE3ig/+ofGBYp+KgrNKxmPUdIpng7/YYCh/FtE58TH8lM99sc6kzbtfh242hkvGHCdV3yC2fjwkgjJz7VpLiqKgmdVyieUuJRETLbGQv8EE7HhvGgiXgBNxAugiXh6hPAHHjo4DDB8kpoAAAAASUVORK5CYII=" SearchSteps="FuzzySelector, Image" />
+                            </scg:List>
+                          </uix:TargetAnchorable.Anchors>
+                        </uix:TargetAnchorable>
+                      </uix:NCheck.Target>
+                    </uix:NCheck>
+                    <uix:NCheck Action="Check" DisplayName="Check/Uncheck 'unchecked'" sap:VirtualizedContainerService.HintSize="334,156" sap2010:WorkflowViewState.IdRef="NCheck_2" ScopeIdentifier="d0eca8fc-fec9-4f0e-b552-5bf63b0db6f7" Version="V1">
+                      <uix:NCheck.Target>
+                        <uix:TargetAnchorable BrowserURL="https://www.fedex.com/shipping/navigationHeaderAction.do?method=doNewReturnShipment" DesignTimeRectangle="1216, 845, 13, 13" ElementType="CheckBox" FriendlyName="'Checkbox'" FullSelectorArgument="&lt;webctrl id='ss.libCellsIonInEquip.chbx' tag='INPUT' type='checkbox' /&gt;" FuzzySelectorArgument="&lt;webctrl id='ss.libCellsIonInEquip.chbx' tag='INPUT' type='checkbox' aaname='Ion Contained in Equipment (UN3481, PI967)' /&gt;" Guid="a17839be-a66e-4d95-8f63-788c4735b18a" ImageBase64="" InformativeScreenshot="a05e8178c1e5fc5a750ba2932fdfbf96.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='FedEx Ship Manager - Create Return Shipment' /&gt;" SearchSteps="Selector, FuzzySelector">
+                          <uix:TargetAnchorable.Anchors>
+                            <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                              <uix:Target DesignTimeRectangle="1232, 848, 221, 12" ElementType="Text" FriendlyName="'unchecked'" FullSelectorArgument="&lt;webctrl parentid='ss.libCellsIonInEquip.chbxLine' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='ss.libCellsIonInEquip.chbxLine' tag='LABEL' type='' aaname='Ion Contained in Equipment (UN3481, PI967)' check:text='unchecked' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAOEAAAAQCAYAAADgfRjGAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAR5SURBVGhD7VjtbeMwDL1VMlqziztLkFWK/L4RCmQJn0iR1CNFxc5dc24BPUCALVHk4yPpfvxaJyYmDsUcwomJgzGHcGLiYMwhnJg4GDaEt/fTenq/ydu/4r5e3oq/k6y3S9n5W9zW5XReL5/ymmKPzR5U3suHvCo+ludyIHvNHVbndxe+KrfnQT1xvg6yLjny2edlPUd+vLcU5voc/OB56JVMo/v17PTnd7HPepbPd/Qy97z6kWU8uYY7OEp+fCYcHT9dzIf8qM+GFwwhNY0XPYr4FLIivwyDIXwWroA/FVWLfAhLjbWeWX1wyKxJQQ84dwOT6ab303i117BeNlh7hxDt0Ddw8f2LH0X/gSR/fe+QTcg9cBsMIU5+C1IFWzjxYaJEvhu4+3r/KEvf4EvhvjzlK7FoXPYBPMSnicxLk2tiPOKId7G5bF/id0JaTjKkxb/6SQc2ayZAHs83VGvOmNulaSK5ZftN48aj7bW7ue5o2+qvoDPL2w2FgPckrp5fSxyNieeIrndIb7lr+9j4+Nx4+V4eo7eT+lJuUEOya/0SbDbi+LsVt3evVzqEjhyQqYUJ4oYC9YkFgL9i3RqP91Fc2XdxbuuN9hggBttXmxFH3jdeUDzkw/bqE0A2MITqh326phGwz2Ln1lY8yLmg8Y25iR+wd/visxYefFoOhNhsvU+1iQ1U99W+wNVHwHuxBnAPzxmiK+RPoLw4vuNOqDxbH3ls9qCgs8NcoE6+zjW28cIPfuwF8pf0h+UlSIYQCsSgoJVYTyaIX8A2DwSI5xTXEjJRgQMKI2Cuknjluc0R7+iiuL4QMXeBNUE9NwG75hC4XDzG8WpxNXbTKeSWaDfKGf2zTciffY10l2dslgryD7kl9XFDhuf0TDHx3AE0IBvNCXV2fL1mCq/xGKOeYCS6VJsydKh7sEG96LzXr4B8A78vH0InmKH5ZB9AQBspS9qKgUU0oZDnNkeLE+ALFnMXWE713PykuRa4XDzG8XxDNZ1Cbol247o0//GuYaS7PPeakX/MDeMJcMiwfgXEebnCuUOLyXxlMGyVHH8nGsS8sr0MD+2GNQSNQv29P7ILuijoHsR9/tfRtNgI2vfFc/dcctXWErJ9SLQbQrGRgawN07iMONaibsR1PgFkwz5DY9p+gMslYBgPfdfnWoPtHMZ1AR05rt/nWI4r2KONA+2rH0Jvx/2jfLB+jMpbYxJ3u9vZClDnhG/k+HC4AA/tIA7rm8xDprXLJeuNApdzwfP/mEmLHaFCywpk2I+cGZlhM4gv9gG8yvulcK73G5dHHDnHGLfA9nf+Y8ZxDrkxOJcWy5boO4rXdDmXX3m08DG3UsDgb5wz6oj+292x7sqzrzH5Qf1qTPHLS/0VJINVefiYerfTnhB0TvMA+F6u75nfaOeQ6FJjBj2w1uiL9lPf5Mv7sCGcOAK+6bfgh+1IlKH7Fjx2onwILjs1fjnooxSGcw7hofipQ1i5+J+G3xf38jfo4Ofdf0b/U5Awh3Bi4mDMIZyYOBTr+gexF6XCiJTUDAAAAABJRU5ErkJggg==" SearchSteps="FuzzySelector, Image" />
+                            </scg:List>
+                          </uix:TargetAnchorable.Anchors>
+                        </uix:TargetAnchorable>
+                      </uix:NCheck.Target>
+                    </uix:NCheck>
+                  </Sequence>
+                </If.Then>
+                <If.Else>
+                  <Sequence sap2010:WorkflowViewState.IdRef="Sequence_16">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </Sequence>
+                </If.Else>
+              </If>
+            </Sequence>
+            <uix:NClick ClickType="Single" DisplayName="Click 'Ship'" sap:VirtualizedContainerService.HintSize="484,192" sap2010:WorkflowViewState.IdRef="NClick_4" InteractionMode="DebuggerApi" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="d0eca8fc-fec9-4f0e-b552-5bf63b0db6f7" Version="V1">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="https://www.fedex.com/shipping/navigationHeaderAction.do?method=doNewReturnShipment" DesignTimeRectangle="1489, 1204, 28, 20" ElementType="Button" FriendlyName="'Ship'" FullSelectorArgument="&lt;webctrl id='completeShip.ship.field' tag='INPUT' type='button' /&gt;" FuzzySelectorArgument="&lt;webctrl id='completeShip.ship.field' tag='INPUT' type='button' aaname='Ship' check:text='Ship' /&gt;" Guid="34fe9830-59b4-4aae-b1d4-31530348797f" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAACAAAAAYCAYAAACbU/80AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFzSURBVEhL7ZKxTsMwEEDxfzGwsLAyd2LowIAwC0tHZiYGhIiQkJBQf4ABRRVqxZIBMdQTQiptmCBLTeh02Bc7SamdOCCSDJz0pJx9uXtxvMY5hyZpj0AQBLViFNgnl050yemv+BewCuyScydMTatQLuBFkI9XT63TED5Ezv17Y+Mhk9URDA17eawCO+REMIYQh4zE8wjG6PIOd3KPToHjnlnAlWIBNQSiKVyjUA4twKKkRgZjaeOlE1CnGIraNFStVaBDjqFDJ1lzeIOBXNPovWgGfdGo7y9EsgBG7QJ6aFIrhLwCgW1yhFz5n1isY+7f4roUmMsF/dX6K0VT6wmovS5h+Gvlu6UCCH1OhmHE8EiztfQO/KmA4sKPsdGLV4PAFumlAydeD/MzzGN4oCKnT5UFlu9LUlsoILnBRllomZ8IhP4svdT6PavAJjl0AoeXsfILMtorsEEOnPjesCpWgXWy54SpaRXaK1AnKwJN0bAAhy87vt7SPZQxfwAAAABJRU5ErkJggg==" InformativeScreenshot="fe37b25593848c5a74dc46f5cfc66cfc.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='FedEx Ship Manager - Create Return Shipment' /&gt;" SearchSteps="Selector, FuzzySelector, Image" />
+              </uix:NClick.Target>
+              <uix:NClick.VerifyOptions>
+                <uix:VerifyExecutionOptions DisplayName="Label '2 Print label(s)'" Mode="Appears" Retry="True">
+                  <uix:VerifyExecutionOptions.Target>
+                    <uix:TargetAnchorable BrowserURL="https://www.fedex.com/shipping/returnShipAction.handle?method=doContinue" DesignTimeRectangle="1023, 310, 87, 12" ElementType="Text" FriendlyName="'2 Print label(s)'" FullSelectorArgument="&lt;webctrl aaname=' Print label(s)' parentid='footPrintsDiv' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname=' Print label(s)' parentid='footPrintsDiv' tag='LABEL' type='' check:text='2 Print label(s)' /&gt;" Guid="83bbf8ed-25ca-4477-86a0-f5f6152c980a" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAFsAAAAQCAYAAAB5qQM2AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAL2SURBVFhH7ZfPaxNBFMdjVYSCXlVQkHr07n/Sox6TKCIWbEVyiOQg+gdoaNQUbN2CBS+h1FMVDAY8tAd/LOixpgpF04sHD9nnvPm1b2ZetlvBCGW/8NrszLyZ9z7zdna3BIXGpgL2GBXAToYJfH3/AxYurcOts0tw5egjKB+ah6vHHkPt/DI8q76Bb593IUnEWPxTKLcc2Aj65f1NmD21KAFzVploQW1qGV4//Kh8Ct65ZWFjlSLo68fbUC4JsMbaAz0CNYAutgnos6cXJfAs2NtR5M4lrB7t6F5fO7A6LcY0Yn2doV6Hn0e0l0sRrG7pa0Yqpuwxgbx55RzTXdhWl4xULn6MFnb/009R0U8tFGWxmjCOxe8exMh90IcV0VeZmIc7F1bg+5ddHMFKJdaBDed6n4kGiqE5atPGAjtjfSI/d5SFvXB5XXRS0KF1seg0bLy+NvkEnt94qyZgFCy41YW68Gv20qTrWM0yEVrZ5ndHJibXl5Wk202bfxc4UPixZt1mA/9jHwWvQAbtdF6uyq0Pn6uRhY0Pw9SJMXOcyCpXbdXDLbh78YVqZ+TDNolioCbINBgGtvGVCZqx+Spbzm9udb+d+G80xDpkI027E3vgb3LSmyNj9uMK47Swq0daMgjWZvrwS476DfFM2l4RZ/ftc5Hs4WQSo+Ymk1YIC9tUrlMl+WBLaT+1NoWVjrHX7+hY14fOm24OyhSFNucc93IQsrDdRYhZ0CKwttcnYM+dWdK9odwqcPWvYUsoDKy9YOea14EqJPtxPdqXAZuvbP1QFApAC8tX2f8DtvbXidO11O/U3z9GjI8DNdgs9xgJ50JlHCPsmU2q2oo8IPd7ZlP9PWzdhzGQqpEiUNxqEw9i7W/WZR+QzLEjFczr9zE+TsxKFnaetxHf9nobOZjKuLOIuEKzsPn37NGW5z37oEqCtMcFJ3X3+RtiYdsvyBPeFyRnOb8gC7mysFHDYQJr9zbh5snRFY4VXZuK4NWDD9qrUD4B/AHlwdyXqCC2+gAAAABJRU5ErkJggg==" InformativeScreenshot="23b773f824a05e6dd79efbbc7e3076d4.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='FedEx Ship Manager - Print Your Label(s)' /&gt;" SearchSteps="FuzzySelector, Image">
+                      <uix:TargetAnchorable.Anchors>
+                        <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                          <uix:Target DesignTimeRectangle="816, 285, 723, 17" ElementType="Text" FriendlyName="'Prepare a shipment'" FullSelectorArgument="&lt;webctrl parentid='header' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='header' tag='LABEL' type='' aaname='Prepare a shipment' check:text='Prepare a shipment' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAtcAAAAVCAYAAACNMcLLAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAMcSURBVHhe7drNTeQwAIBRmqSFbQOJJtA2MA0gOkDixpUCVuJCEdnxEDuOfyZmFBbt6D3Jhw2eJONcvnjnZgIAAHYhrgEAYCfiGgAAdiKuAQBgJ+IaAAB2kuL6/XCYft38bo6Hl3kSZ8U1vDt8zEdqI3MAAPg/DcV1GAJ72/XG9cf0dHuYnv7M/wQAoKmK6zL6Xu/nwL5/m4/Qc5270m/TQ3j+N+IaAGDLZlxPL4+fcX37PL0f/7nMe56ja/lM/Fscq93uP8/TXTh+PM9rPm8+bxKvl438PDH2H47XP50v/T3sruafe5xeT5/oSy8Oo5+J3yEb+b3la7hai+zFpFrnkXVJ132cnhrnzb9H+T8M555Jfi+rtUjXjmGdDS9ZAABdX965LmMtjBBsrePxbyeNME0jxlx3zhK9dRCHHdUyrOPox3Lvfrvx2L23ZUc3reFtfe7yBaSK69bYXJfWWL7z1jPprsFxfN6fuAYA+Iov/+Z6mZeHa+OnAzEIG4HYCu50bKU+b4rrfGe32F0Pqojd0jjHSvl9Glprk44VLyetuO6uS2PO8pIRr1Wu1fYzad1v+TLVPA8AAE0Dcb2OqjIWT7L4q8ccbkXYRTHm1hEcgy6OOq7z+f17P46tndbyZyjdeG7sjhdzm2sTz78V1+fWJa1vP9qX+5vXauCZjNyvuAYAGLf9m+tCc95ecV3NqcMuzs93ulMktkYejpnqe2ztXCd1ZMd7aa7NN8f1cq3L4/rc/YprAIBx+8T1SIBlsbeE8bJDHY5Vu9LpM+fjejyMo/p+4/caP0f2mV44B6NxfRy9dbkorgeeycj91ucFAKBnp7hejlcjRtq5ndQ5aLvn2Irrxm5yHOt5UX9+N65jdDZGvMZIrFZzBtblsrjefiYj91utVToOAEBpt7gOqpjLQywGYgjGPFRXMbsOuXCN8nrtuA7qYG6H9WwVtSFI6zitNEI4X4eRWK3mjKzLhXEdnHsmI/cbrM6xel4AAORSXH+7PCLnQxxZFwCAqyGuf5p1AQC4GuL6p1kXAICr8e/iGgAArpy4BgCAXUzTX5XVE/giK9KiAAAAAElFTkSuQmCC" SearchSteps="FuzzySelector, Image" />
+                        </scg:List>
+                      </uix:TargetAnchorable.Anchors>
+                    </uix:TargetAnchorable>
+                  </uix:VerifyExecutionOptions.Target>
+                  <uix:VerifyExecutionOptions.Timeout>
+                    <InArgument x:TypeArguments="x:Double" />
+                  </uix:VerifyExecutionOptions.Timeout>
+                </uix:VerifyExecutionOptions>
+              </uix:NClick.VerifyOptions>
+            </uix:NClick>
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke PrintLabel workflow" sap:VirtualizedContainerService.HintSize="484,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="PrintLabel.xaml">
+              <ui:InvokeWorkflowFile.Arguments>
+                <InOutArgument x:TypeArguments="ui:UiElement" x:Key="io_web_FedEx">
+                  <CSharpReference x:TypeArguments="ui:UiElement" sap2010:WorkflowViewState.IdRef="CSharpReference`1_7">io_web_FedEx</CSharpReference>
+                </InOutArgument>
+                <InArgument x:TypeArguments="x:Boolean" x:Key="bool_IsTerm">
+                  <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_12">bool_IsTerm</CSharpValue>
+                </InArgument>
+                <OutArgument x:TypeArguments="x:String" x:Key="out_str_TrackingNumber">
+                  <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_6">out_str_ReturnTrackingNumber</CSharpReference>
+                </OutArgument>
+                <OutArgument x:TypeArguments="si:FileInfo" x:Key="out_fileinfo_LabelPdf">
+                  <CSharpReference x:TypeArguments="si:FileInfo" sap2010:WorkflowViewState.IdRef="CSharpReference`1_5">out_fileinfo_ReturnLabelPdf</CSharpReference>
+                </OutArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="str_UserName">
+                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_13">str_UserName</CSharpValue>
+                </InArgument>
+              </ui:InvokeWorkflowFile.Arguments>
+            </ui:InvokeWorkflowFile>
+          </Sequence>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.InUiElement>
+        <InArgument x:TypeArguments="ui:UiElement">
+          <CSharpValue x:TypeArguments="ui:UiElement" sap2010:WorkflowViewState.IdRef="CSharpValue`1_1">io_web_FedEx</CSharpValue>
+        </InArgument>
+      </uix:NApplicationCard.InUiElement>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp Area="0, 0, 0, 0" />
+      </uix:NApplicationCard.TargetApp>
+    </uix:NApplicationCard>
+  </Sequence>
+</Activity>
